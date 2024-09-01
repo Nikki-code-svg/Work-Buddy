@@ -23,7 +23,7 @@
   box-sizing: border-box; 
 }
 
-/* Responsive Design: Adjust for smaller screens */
+
  @media (max-width: 768px) {
   .navbar {
     flex-direction: column; 
@@ -31,19 +31,34 @@
   } 
 }
 
-/* Optional: Hover Effect */
+
 .navbar a:hover, .navbar button:hover {
-  background-color: #555; /* Darker background on hover */
-  color: #fff; /* Ensure text is readable */
+  background-color: #555; 
+  color: #fff; 
 }
 
 .navbar a.active {
   color: #ED9455;
 }
+ /* user details */
+.user-name-title {
+  text-align: center;
+  background-color: #FFBB70;
+  padding: 20px;
+}
 
 
 
 /* Home/jobsites */
+
+/* form title for jobs */
+.create-title {
+  text-align: center;
+  background-color: #B4B4B8;
+  padding: 20px;
+
+}
+
 .jobsitelist-container {
   display: flex;
   flex-wrap: wrap;
@@ -53,22 +68,20 @@
 
 .newjob {
   flex: 1;
-  max-width: 40%; /* Adjust based on desired width for the form */
+  max-width: 40%; 
   margin-right: 20px;
 }
 
 .searchbar-container {
   flex: 2;
-  max-width: 55%; /* Adjust based on desired width for the search bar and job cards */
+  max-width: 55%; 
 }
 
 .searchbar-jobsite {
   margin-bottom: 20px;
 }
 
-.display-jobsites {
-  /* Optionally add padding or margin here */
-}
+
 
 @media (max-width: 768px) {
   .jobsitelist-container {
@@ -76,17 +89,25 @@
   }
 
   .newjob, .searchbar-container {
-    max-width: 100%;
+    max-width: 98%;
     margin-right: 0;
     margin-bottom: 20px;
   }
 }
 
-/* JobCard.css */
+
+
+.jobsite-title{
+  text-align: center;
+  background-color: #B4B4B8;
+  padding: 20px;
+}
+
+
 .job-card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Distribute buttons evenly */
+  justify-content: space-between;
   margin-bottom: 1em;
 }
 
@@ -114,14 +135,14 @@
 }
 
 .delete-button {
-  padding: 0.25em 0.5em; /* Smaller padding */
+  padding: 0.25em 0.5em; 
   border: none;
   border-radius: 5px;
   background-color: red;
   color: white;
   cursor: pointer;
   margin-top: 0.5em;
-  font-size: 0.75em; /* Smaller font size */
+  font-size: 0.75em; 
   transition: background-color 0.3s;
 }
 
@@ -161,12 +182,13 @@ form {
   font-size: 1em;
 }
 
+/* controls all form inputs */
 .new-form-group input {
   padding: 0.75em;
   font-size: 1em;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 100%;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  width: 90%;
 }
 
 button {
@@ -190,8 +212,12 @@ button:hover {
   }
 }
 
+
+/* start materials */
 .material-title {
   text-align: center;
+  background-color: #B4B4B8;
+  padding: 20px;
 }
 
 .materiallist-container {
@@ -202,7 +228,7 @@ button:hover {
 }
 
 .equal-section {
-  flex: 1; /* Ensures equal space for both sections */
+  flex: 1; 
 }
 
 .material-section {
@@ -239,6 +265,8 @@ button:hover {
 
   .material-search-bar {
     flex: 1;
+    width: 60%;
+    
   }
 
   .material-cards {
@@ -263,11 +291,11 @@ button:hover {
 }
 
 .materialbtn {
-  flex: 6; /* Make materialbtn take up more space */
+  flex: 6; 
   background-color: #FFBB70;
   color: #fff;
   border: none;
-  padding: 0.75em; /* Larger padding for materialbtn */
+  padding: 0.75em; 
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
@@ -279,15 +307,15 @@ button:hover {
 }
 
 .deletebtn {
-  flex: 0; /* Make delete button smaller */
+  flex: 0;
   background-color: red;
   color: white;
   border: none;
-  padding: 0.5em; /* Smaller padding for delete button */
+  padding: 0.5em; 
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.75em; /* Smaller font size for delete button */
+  font-size: 0.75em; 
   transition: background-color 0.3s;
 }
 
@@ -296,26 +324,28 @@ button:hover {
 }
 
 
+
+/* start punch list */
 .punchlist-container {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  gap: 1em; /* Space between items */
+  flex-direction: column;
+  gap: 1em; 
   padding: 1em;
 }
 
 .punchlist-container > div {
-  margin-bottom: 1em; /* Space between the NewPunchList and the list */
+  margin-bottom: 1em; 
 }
 
 .punchlist-card {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space out the checkbox and text/button */
+  justify-content: space-between; 
   padding: 1em;
-  border: 1px solid #ddd; /* Light border */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #f9f9f9; /* Slightly different background color */
-  margin-bottom: 0.5em; /* Space between items */
+  border: 1px solid #ddd; 
+  border-radius: 5px; 
+  background-color: #f9f9f9; 
+  margin-bottom: 0.5em; 
 }
 
 .punchlist-card button {
@@ -336,22 +366,22 @@ button:hover {
 table {
   width: 100%; 
   border-collapse: collapse; 
-  background-color: #E3E1D9;/* Set background color for the table */
-}/* }FFEC9E; */
+  background-color: #E3E1D9;
+}
 
 thead {
-  background-color: #B4B4B8; /* Set background color for the header */
+  background-color: #B4B4B8; 
 }
 
 th, td {
-  padding: 15px; /* Add padding to make the table cells evenly spaced */
-  text-align: left; /* Align text to the left */
-  border: 1px solid #ddd; /* Add a subtle border to table cells */
-  font-size: 1rem; /* Set font size */
+  padding: 15px; 
+  text-align: left; 
+  border: 1px solid #ddd; 
+  font-size: 1rem; 
 }
 
 th {
-  font-weight: bold; /* Make header text bold */
+  font-weight: bold; 
 }
 
 tbody tr:nth-child(even) {
@@ -361,30 +391,29 @@ tbody tr:nth-child(even) {
 /* Responsive design */
 @media (max-width: 768px) {
   th, td {
-      padding: 10px; /* Adjust padding for smaller screens */
-      font-size: 0.9rem; /* Slightly reduce font size on mobile */
+      padding: 10px;
+      font-size: 0.9rem; 
   }
 
   tbody, thead {
-      display: block; /* Make table scrollable horizontally on small screens */
+      display: block; 
       overflow-x: auto;
   }
 
   tr {
       display: flex;
-      flex-direction: column; /* Stack table rows on small screens */
+      flex-direction: column; 
       margin-bottom: 10px;
   }
 
   th, td {
       width: 100%;
-      box-sizing: border-box; /* Ensure that padding and borders are included in width */
+      box-sizing: border-box;
   }
 
   th {
-      background-color: #B4B4B8; /* Keep the header background color */
-      font-size: 1.1rem; /* Slightly increase font size for header */
+      background-color: #B4B4B8; 
+      font-size: 1.1rem; 
   }
 }
 
-/* /////////////////////// */

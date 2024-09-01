@@ -58,7 +58,7 @@ function NewJob({ handleAddJobsite}) {
       return (
         <div>
           <div className='create-jobsite-wrapper'>
-            <h1>Create Jobsite</h1>
+            <h1 className='create-title'>Create Jobsite</h1>
             {errors.length > 0 && (
               <div className='error-messages'>
                 {errors.map((error, index) => (

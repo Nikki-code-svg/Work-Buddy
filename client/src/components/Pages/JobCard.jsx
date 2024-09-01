@@ -6,7 +6,7 @@ function JobCard({ jobsite, handleDelete }) {
     return (
         <div className="job-card-container">
             <Link to={`/jobsite/${jobsite.id}`}>
-                <button>{jobsite.name}</button>
+                <button className='jobsiteNbtn'>{jobsite.name}</button>
             </Link>
             <button 
                 onClick={() => handleDelete(jobsite.id)} 

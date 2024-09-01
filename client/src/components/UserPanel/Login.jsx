@@ -24,7 +24,7 @@ function Login({ setCurrentUser }) {
     })
     .then(data => {
       setCurrentUser(data);
-      navigate('/jobsite');
+      navigate('/');
     })
     .catch(error => {
       alert(error.message);

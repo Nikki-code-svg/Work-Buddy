@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 function MaterialCard({ material, handleDelete }) {
     return (
         <div className='material-card'>

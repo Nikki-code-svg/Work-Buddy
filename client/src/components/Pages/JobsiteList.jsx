@@ -42,9 +42,10 @@ function JobsiteList({ search, setSearch, setSelectedJobsite }) {
 
    return (
         <main className="jobsitelist-container">
-            <div className='newjob'>
+            <div className=' equal-section newjob'>
               <NewJob handleAddJobsite={handleAddJobsite} />
             </div>
+            <div className='equal-section newjob'>
             <div className='searchbar-josbsite'>
                 <input
                     type="text"
@@ -55,8 +56,9 @@ function JobsiteList({ search, setSearch, setSelectedJobsite }) {
                 />
             </div>
             <div>
-                <h2>JobSites</h2>
+                
                 <div className='display-jobsites'>
+                <h2 className='jobsite-title'>JobSites</h2>
                     {filteredJobsites.map((jobsite) => (
                         <JobCard 
                             key={jobsite.id} 
@@ -69,6 +71,7 @@ function JobsiteList({ search, setSearch, setSelectedJobsite }) {
                             }}
                         />
                     ))}
+                    </div>
                 </div>
             </div>
         </main>

@@ -8,13 +8,11 @@ function NavBar({ currentUser, handleLogout }) {
       {currentUser ? (
         <>
           <NavLink to="/">Home</NavLink>
-          {/* <NavLink to="/jobsites">Jobsites</NavLink> */}
           <NavLink to="/materials">Material lists</NavLink>
           <NavLink to="/punchlist">Punch List</NavLink>
           <NavLink to="/prints">Prints</NavLink>
           <NavLink to="/image">Images</NavLink>
-         
-      
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
         </>
       ) : (
         <div className="parent-container">

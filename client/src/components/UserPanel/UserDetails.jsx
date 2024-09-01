@@ -16,9 +16,8 @@ function UserDetails({currentUser, setCurrentUser, search,  setSearch, setSelect
       return (
         <div className='user-details'>
          
-          <h2>Welcome {currentUser.username}!</h2>
-          <button className='logoutbtn' onClick={handleLogout}>Logout</button>
-          <JobsiteList  search={search}  setSearch={setSearch} setSelectedJobsite={setSelectedJobsite}/>
+          <h2 className='user-name-title'>Welcome {currentUser.username}!</h2>
+           <JobsiteList  search={search}  setSearch={setSearch} setSelectedJobsite={setSelectedJobsite}/>
         </div>
         
       )

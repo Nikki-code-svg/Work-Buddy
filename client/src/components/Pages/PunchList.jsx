@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import NewPunchList from './NewPunchList';
 import PunchListCard from './PunchListCard';
+import CopyButton from '../ClipBoard';
+
 
 
 
@@ -37,7 +39,7 @@ function PunchList() {
         .catch(error => console.error('Error deleting items from punchlist:', error))
     }
 
-
+    const allPunchlistText = punchlist.map(punchlist => punchlist.name).join('\n');
 
  return (
         <main className='punchlist-container'>
@@ -56,10 +58,12 @@ function PunchList() {
                          />
                         
                         )}
+                         <CopyButton textToCopy={allPunchlistText} />
                     </div>
                 ) : (
                     <p>No punchlist available</p>
                 )}
+
             </div>
         </main>
     )

@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import CopyButton from '../ClipBoard';
 
 function MaterialInfo({ loading, setLoading }) {
     const { id } = useParams();
@@ -81,9 +82,11 @@ function MaterialInfo({ loading, setLoading }) {
 
 return (
   <div className='material-info-container'>
+  
       <h1>
           {isEditable ? (
               <input
+                  className='material-date'
                   name='datelist'
                   type='text'
                   value={inputValues.datelist}
@@ -97,7 +100,9 @@ return (
       <h1>Material List</h1>
 
       <div>
+      <CopyButton textToCopy={material.content.join('\n')} />
           {isEditable ? (
+            
               <textarea
                   name='content'
                   value={Array.isArray(inputValues.content) ? inputValues.content.join('\n') : inputValues.content}
@@ -113,6 +118,7 @@ return (
       <button onClick={toggleEditMode}>
           {isEditable ? 'Save' : 'Edit Data'}
       </button>
+    
   </div>
 );
 }

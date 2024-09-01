@@ -28,7 +28,7 @@ function NewMaterial({ handleAddMaterial }) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(form), // Sending form data directly without modifications
+            body: JSON.stringify(form),
         })
         .then(res => {
             if (!res.ok) {
@@ -80,7 +80,7 @@ function NewMaterial({ handleAddMaterial }) {
                             name="content"
                             value={form.content}
                             onChange={handleChange}
-                            rows="6"  // Increased rows to show more content
+                            rows="18"  
                             cols="50"
                             placeholder="Enter items, each on a new line"
                             required

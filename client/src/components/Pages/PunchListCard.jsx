@@ -8,6 +8,8 @@ function PunchListCard({ punchlist, handleDelete }) {
         setShowDelete(event.target.checked);
     };
 
+
+
     return (
         <div className="punchlist-card">
             <input 
@@ -23,7 +25,9 @@ function PunchListCard({ punchlist, handleDelete }) {
                 >
                     Delete
                 </button>
+                 
             )}
+           
         </div>
     );
 }

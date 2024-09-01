@@ -73,8 +73,8 @@ function NewPunchList({ handleAddItems }) {
                             required
                         />
                     </div>
-                   <button type="submit">
-                        {isLoading ? 'Adding...' : 'Add Materials'}
+                   <button className="punchbtn" type="submit">
+                        {isLoading ? 'Adding...' : 'Add Items'}
                     </button>
                 </form>
             </div>

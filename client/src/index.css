@@ -9,14 +9,14 @@
   max-width: 400px;
   display: flex;
   flex-direction: column;
-   /* Centers the content horizontally */
+ 
 }
 
 /* Title */
 .title {
   text-align: center;
   font-size: 3em;
-  margin-bottom: 1em; /* Adds space below the title */
+  margin-bottom: 1em; 
 }
 
 /* Login and Sign Up Buttons */
@@ -77,11 +77,4 @@
 }
 
 
-.navbar a:hover,
-.navbar button:hover {
-  color: #0056b3;
-}
 
-.navbar a.active {
-  color: #0056b3;
-} 
