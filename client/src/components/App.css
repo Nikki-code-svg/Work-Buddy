@@ -220,6 +220,13 @@ button:hover {
   padding: 20px;
 }
 
+.create-new-title {
+  text-align: center;
+  background-color: #B4B4B8;
+  padding: 20px;
+
+}
+
 .materiallist-container {
   display: flex;
   justify-content: space-between; 
@@ -323,9 +330,32 @@ button:hover {
   background-color: darkred;
 }
 
+.material-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.copybtnM {
+  margin-left: auto;
+}
 
 
 /* start punch list */
+
+.create-punch-title {
+  text-align: center;
+  background-color: #B4B4B8;
+  padding: 20px;
+
+}
+
+.punchlist-title {
+  text-align: center;
+  background-color: #B4B4B8;
+  padding: 20px;
+
+}
+
 .punchlist-container {
   display: flex;
   flex-direction: column;

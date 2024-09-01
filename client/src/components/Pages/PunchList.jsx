@@ -47,7 +47,7 @@ function PunchList() {
                 <NewPunchList handleAddItems={handleAddItems} />
             </div>
             <div>
-                <h2>Punch List</h2>
+                <h2 className='punchlist-title'>Punch List</h2>
                 {punchlist.length > 0 ? (
                     <div>
                         {punchlist.map((punchlist) => 

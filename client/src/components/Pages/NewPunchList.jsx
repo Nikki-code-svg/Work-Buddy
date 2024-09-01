@@ -53,7 +53,7 @@ function NewPunchList({ handleAddItems }) {
     return (
         <div>
             <div className="create-punchlist-wrapper">
-                <h1>Create New Punch List</h1>
+                <h1 className="create-punch-title">Create New Punch List</h1>
                 {errors.length > 0 && (
                     <div className="error-messages">
                         {errors.map((error, index) => (

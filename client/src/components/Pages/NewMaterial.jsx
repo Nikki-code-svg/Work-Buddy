@@ -53,7 +53,7 @@ function NewMaterial({ handleAddMaterial }) {
     return (
         <div>
             <div className="create-material-wrapper">
-                <h1>Create New Material List</h1>
+                <h1 className='create-new-title'>Create New Material List</h1>
                 {errors.length > 0 && (
                     <div className="error-messages">
                         {errors.map((error, index) => (

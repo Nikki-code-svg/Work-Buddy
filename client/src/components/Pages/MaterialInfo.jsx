@@ -42,11 +42,11 @@ function MaterialInfo({ loading, setLoading }) {
     const toggleEditMode = () => {
       if (isEditable) {
           const payload = {
-              datelist: inputValues.datelist, // Ensure this matches the server's expectations
-              content: inputValues.content.join('\n'), // Ensure this is formatted correctly
+              datelist: inputValues.datelist, 
+              content: inputValues.content.join('\n'), 
           };
   
-          console.log('Payload:', payload); // Log the payload to the console
+          console.log('Payload:', payload); 
   
           fetch(`/api/materials/${id}`, {
               method: 'PATCH',
@@ -80,47 +80,52 @@ function MaterialInfo({ loading, setLoading }) {
 
 
 
-return (
-  <div className='material-info-container'>
-  
-      <h1>
-          {isEditable ? (
-              <input
-                  className='material-date'
-                  name='datelist'
-                  type='text'
-                  value={inputValues.datelist}
-                  onChange={(e) => handleInputChange('datelist', e.target.value)}
-              />
-          ) : (
-              material.datelist
-          )}
-      </h1>
-
-      <h1>Material List</h1>
-
-      <div>
-      <CopyButton textToCopy={material.content.join('\n')} />
-          {isEditable ? (
-            
-              <textarea
-                  name='content'
-                  value={Array.isArray(inputValues.content) ? inputValues.content.join('\n') : inputValues.content}
-                  onChange={(e) => handleInputChange('content', e.target.value.split('\n'))}
-              />
-          ) : (
-              Array.isArray(material.content) ? material.content.map((item, index) => (
-                  <p key={index}>{item}</p>
-              )) : <p>{material.content}</p>
-          )}
-      </div>
-
-      <button onClick={toggleEditMode}>
-          {isEditable ? 'Save' : 'Edit Data'}
-      </button>
-    
-  </div>
-);
+    return (
+        <div className='material-info-container'>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date List</th>
+                        <th>Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {isEditable ? (
+                                <input
+                                    className='material-date'
+                                    name='datelist'
+                                    type='text'
+                                    value={inputValues.datelist || ''}
+                                    onChange={(e) => handleInputChange('datelist', e.target.value)}
+                                />
+                            ) : (
+                                material.datelist || 'No date available'
+                            )}
+                        </td>
+                        <td>
+                            <CopyButton className='copybtnM' textToCopy={inputValues.content.join('\n')} />
+                            {isEditable ? (
+                                <textarea
+                                    name='content'
+                                    value={inputValues.content.join('\n') || ''}
+                                    onChange={(e) => handleInputChange('content', e.target.value.split('\n'))}
+                                />
+                            ) : (
+                                Array.isArray(material.content) ? material.content.map((item, index) => (
+                                    <p key={index}>{item}</p>
+                                )) : <p>{material.content}</p>
+                            )}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onClick={toggleEditMode}>
+                {isEditable ? 'Save' : 'Edit Data'}
+            </button>
+        </div>
+    );
 }
 
 export default MaterialInfo;
