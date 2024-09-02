@@ -3,16 +3,18 @@ import MaterialCard from './MaterialCard';
 import NewMaterial from './NewMaterial';
 import { useNavigate } from 'react-router-dom';
 
-function MaterialList({ search, setSearch, setSelectedMaterial }) {
+function MaterialList({ search, setSearch, setSelectedMaterial, jobsiteId }) {
    const [materials, setMaterials] = useState([]);
+  
    const navigate = useNavigate();
 
    useEffect(() => {
-     fetch('/api/materials')
+     fetch(`/api/jobsites/${jobsiteId}/materials`)
      .then(response => response.json())
      .then(data => setMaterials(data))
      .catch(error => console.error('Error fetching data:', error));
-   }, []);
+   }, [jobsiteId]);
+   console.log('Jobsite ID:', jobsiteId);
 
    const handleAddMaterial = (newMaterial) => {
     setMaterials(prevMaterials => [newMaterial, ...prevMaterials]);
@@ -40,7 +42,7 @@ function MaterialList({ search, setSearch, setSelectedMaterial }) {
    return (
     <main className="materiallist-container">
         <div className="equal-section new-material">
-            <NewMaterial handleAddMaterial={handleAddMaterial} />
+            <NewMaterial handleAddMaterial={handleAddMaterial} jobsiteId={jobsiteId}/>
         </div>
         <div className="equal-section material-section">
             <div className="material-search-bar">

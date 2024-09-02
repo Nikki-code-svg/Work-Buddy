@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams  } from 'react-router-dom';
 
-function NewMaterial({ handleAddMaterial }) {
+function NewMaterial({ handleAddMaterial, jobsiteId }) {
     const [form, setForm] = useState({
         datelist: '',
         content: ''
     });
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState([]);
-
+    
     const navigate = useNavigate();
 
     function handleChange(e) {
@@ -23,7 +23,7 @@ function NewMaterial({ handleAddMaterial }) {
         e.preventDefault();
         setIsLoading(true);
     
-        fetch('/api/materials', {
+        fetch(`/api/jobsites/${jobsiteId}/materials`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

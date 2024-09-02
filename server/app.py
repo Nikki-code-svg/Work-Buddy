@@ -176,12 +176,19 @@ def delete_jobsite_by_id(id):
 
 # START OF MATERIAL
 # READ
-@app.get('/api/materials')
-def all_materials():
-    material_list = Material.query.all()
-    material_dict = [ materials.to_dict() for materials in material_list ]
+# @app.get('/api/materials')
+# def all_materials():
+  
+#     material_list = Material.query.all()
+#     material_dict = [ materials.to_dict() for materials in material_list ]
 
+#     return material_dict, 200
+@app.get('/api/jobsites/<int:jobsite_id>/materials')
+def get_materials_by_jobsite(jobsite_id):
+    materials = Material.query.filter_by(jobsite_id=jobsite_id).all()
+    material_dict = [material.to_dict() for material in materials]
     return material_dict, 200
+
 
 # READ BY ID
 @app.get('/api/materials/<int:id>')
@@ -194,15 +201,29 @@ def get_material(id):
         return { "error": "Not Found" }, 404
     
 # POST
-@app.post('/api/materials')
-def create_material():
+# @app.post('/api/materials')
+# def create_material():
+#     data = request.get_json()
+#     try:
+#         # Validate and process the incoming data
+#         datelist = data['datelist']
+#         content = data['content']
+#         # Create and save the new material
+#         new_material = Material(datelist=datelist, content=content)
+#         db.session.add(new_material)
+#         db.session.commit()
+#         return jsonify(new_material.to_dict()), 201
+#     except KeyError as e:
+#         return jsonify({'error': f'Missing key: {e}'}), 400
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 400
+@app.post('/api/jobsites/<int:jobsite_id>/materials')
+def create_material(jobsite_id):
     data = request.get_json()
     try:
-        # Validate and process the incoming data
         datelist = data['datelist']
         content = data['content']
-        # Create and save the new material
-        new_material = Material(datelist=datelist, content=content)
+        new_material = Material(datelist=datelist, content=content, jobsite_id=jobsite_id)
         db.session.add(new_material)
         db.session.commit()
         return jsonify(new_material.to_dict()), 201
@@ -210,55 +231,74 @@ def create_material():
         return jsonify({'error': f'Missing key: {e}'}), 400
     except Exception as e:
         return jsonify({'error': str(e)}), 400
-    # data = request.json
-    # try:
-    #     new_material = Material(**data)
-    #     db.session.add(new_material)
-    #     db.session.commit()
-    #     return new_material.to_dict(), 201
-    # except Exception as e:
-    #     return { "error": str(e)}, 400
+
+   
 
     
 # PATCH
-@app.patch('/api/materials/<int:id>')
-def update_material(id):
+# @app.patch('/api/materials/<int:id>')
+# def update_material(id):
 
-    found_material = Material.query.where(Material.id == id).first()
+#     found_material = Material.query.where(Material.id == id).first()
 
+#     if found_material:
+#         data = request.json
+
+#         try:
+#             for key in data:
+#                 setattr(found_material, key, data[key])
+
+#                 db.session.add(found_material)
+#                 db.session.commit()
+
+#             return found_material.to_dict(), 202
+        
+#         except Exception as e:
+#             return { "error": str(e)}, 400
+        
+#     else:
+#         return {"error": "Could not find Material"}, 404
+@app.patch('/api/jobsites/<int:jobsite_id>/materials/<int:id>')
+def update_material(jobsite_id, id):
+    found_material = Material.query.filter_by(id=id, jobsite_id=jobsite_id).first()
     if found_material:
-        data = request.json
-
+        data = request.get_json()
         try:
             for key in data:
                 setattr(found_material, key, data[key])
-
-                db.session.add(found_material)
-                db.session.commit()
-
+            db.session.commit()
             return found_material.to_dict(), 202
-        
         except Exception as e:
-            return { "error": str(e)}, 400
-        
+            return {'error': str(e)}, 400
     else:
-        return {"error": "Could not find Material"}, 404
+        return {'error': 'Material not found for this job site'}, 404
+
     
 # DELETE
-@app.delete('/api/materials/<int:id>')
-def delete_material(id):
+# @app.delete('/api/materials/<int:id>')
+# def delete_material(id):
 
-    found_material = Material.query.where(Material.id == id).first()
+#     found_material = Material.query.where(Material.id == id).first()
 
+#     if found_material:
+
+#         db.session.delete(found_material)
+#         db.session.commit()
+
+#         return {}, 204
+    
+#     else:
+#         return { "error": "Not Found"}, 404
+@app.delete('/api/jobsites/<int:jobsite_id>/materials/<int:id>')
+def delete_material(jobsite_id, id):
+    found_material = Material.query.filter_by(id=id, jobsite_id=jobsite_id).first()
     if found_material:
-
         db.session.delete(found_material)
         db.session.commit()
-
         return {}, 204
-    
     else:
-        return { "error": "Not Found"}, 404
+        return {'error': 'Material not found for this job site'}, 404
+
 
 # END OF MATERIAL
 
@@ -289,9 +329,9 @@ def get_print(id):
 def create_print():
 
     data = request.json
-
+# (jobsite_id=data['jobsite_id'])
     try:
-        new_print = Prints(jobsite_id=data['jobsite_id'])
+        new_print = Prints(url=data['url'])
         db.session.add(new_print)
         db.session.commit()
 

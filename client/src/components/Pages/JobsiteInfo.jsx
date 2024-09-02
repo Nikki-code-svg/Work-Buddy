@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-function JobsiteInfo({ loading, setLoading }) {
+function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
     const { id } = useParams();
     const [jobsite, setJobsite] = useState(null);
     const [error, setError] = useState(null);
@@ -20,12 +20,13 @@ function JobsiteInfo({ loading, setLoading }) {
             })
             .then(data => {
                 setJobsite(data);
+                setSelectedJobsite(data); 
                 setInputValues(data);
             })
             .catch(error => {
                 setError(error.message);
             });
-    }, [id]);
+    }, [id, setSelectedJobsite]);
 
     const handleInputChange = (key, value) => {
         setInputValues(prev => ({

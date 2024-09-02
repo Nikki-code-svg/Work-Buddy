@@ -4,10 +4,14 @@ import NavBar from './NavBar';
 import Login from './UserPanel/Login';
 import Signup from './UserPanel/Signup';
 import JobsiteInfo from "./Pages/JobsiteInfo";
-import UserDetails from './UserPanel/UserDetails'
+import UserDetails from './UserPanel/UserDetails';
 import MaterialInfo from "./Pages/MaterialInfo";
 import MaterialList from "./Pages/MaterialList";
 import PunchList from "./Pages/PunchList"
+import Prints from "./Pages/Prints";
+// import UploadWidget from "./UploadWidget";
+
+
 
 function App() {
     const [search, setSearch] = useState('');
@@ -52,21 +56,22 @@ function App() {
 
     return (
          <div className='app App'>
+          
             <NavBar currentUser={currentUser} jobsite={selectedJobsite} handleLogout={handleLogout} />
             <Routes>
                 <Route path="/" element={currentUser ? <UserDetails currentUser={currentUser} setSearch={setSearch} search={search} setCurrentUser={setCurrentUser} /> : <Navigate to="/login" />} />  
                 <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
                 <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
-                <Route path="/jobsite/:id" element={currentUser ? <JobsiteInfo loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} />
-                <Route path="/materials" element={currentUser ? <MaterialList loading={loading} setLoading={setLoading} search={search} setSearch={setSearch}/> : <Navigate to="/login" />} />
+                <Route path="/jobsite/:id" element={currentUser ? <JobsiteInfo loading={loading} setLoading={setLoading} setSelectedJobsite={setSelectedJobsite}/> : <Navigate to="/login" />} />
+                {selectedJobsite && (
+                    <Route path="/materials" element={currentUser ? <MaterialList loading={loading} setLoading={setLoading} search={search} setSearch={setSearch} jobsiteId={selectedJobsite.id} /> : <Navigate to="/login" />} />
+                )}
+               
                 <Route path="/materials/:id" element={currentUser ? <MaterialInfo loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} />
                 <Route path="/punchlist" element={currentUser ? <PunchList loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} />
-                {/* <Route path="/prints" element={currentUser ? <JobsiteInfo loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} />
-                <Route path="/image" element={currentUser ? <JobsiteInfo loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} /> */} 
-                {/* <Route path="/jobsite/:id/materials" element={currentUser ? <MaterialList loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} /> */}
-                {/* <Route path="/jobsite/:id/prints" element={currentUser ? <Prints loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} />
-                <Route path="/jobsite/:id/image" element={currentUser ? <Image loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} />
-                <Route path="/jobsite/:id/punchlist" element={currentUser ? <Punchlist loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} />   */}
+                <Route path="/prints" element={currentUser ? <Prints loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} /> 
+                <Route path="/image" element={currentUser ? <Image loading={loading} setLoading={setLoading} /> : <Navigate to="/login" />} /> 
+           
             </Routes>
             </div>
     );
