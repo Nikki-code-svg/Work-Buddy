@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CopyButton from '../ClipBoard';
 
-function MaterialInfo({ loading, setLoading }) {
+function MaterialInfo({ loading, setLoading, jobsiteName }) {
     const { id } = useParams();
     const [material, setMaterial] = useState(null);
     const [error, setError] = useState(null);
@@ -11,6 +10,9 @@ function MaterialInfo({ loading, setLoading }) {
     const [inputValues, setInputValues] = useState({});
 
     useEffect(() => {
+        if (!jobsiteName) {
+            return;
+        }
         fetch(`/api/materials/${id}`)
             .then(res => {
                 if (res.ok) {
@@ -20,7 +22,6 @@ function MaterialInfo({ loading, setLoading }) {
                 }
             })
             .then(data => {
-                // Convert content to an array if it's a string
                 if (typeof data.content === 'string') {
                     data.content = data.content.split('\n');
                 }
@@ -40,51 +41,47 @@ function MaterialInfo({ loading, setLoading }) {
     };
 
     const toggleEditMode = () => {
-      if (isEditable) {
-          const payload = {
-              datelist: inputValues.datelist, 
-              content: inputValues.content.join('\n'), 
-          };
-  
-          console.log('Payload:', payload); 
-  
-          fetch(`/api/materials/${id}`, {
-              method: 'PATCH',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(payload),
-          })
-          .then(res => {
-              if (!res.ok) {
-                  throw new Error('Failed to update material data');
-              }
-              return res.json();
-          })
-          .then(data => {
-              setMaterial(data);
-              setIsEditable(false);
-          })
-          .catch(error => {
-              setError(error.message);
-          });
-      } else {
-          setIsEditable(true);
-      }
-  };
-  
+        if (isEditable) {
+            const payload = {
+                datelist: inputValues.datelist,
+                content: inputValues.content.join('\n'),
+            };
+
+            fetch(`/api/jobsites/${material.jobsite_id}/materials/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Failed to update material data');
+                }
+                return res.json();
+            })
+            .then(data => {
+                setMaterial(data);
+                setIsEditable(false);
+            })
+            .catch(error => {
+                setError(error.message);
+            });
+        } else {
+            setIsEditable(true);
+        }
+    };
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;
     if (!material) return <p>No Material data found</p>;
-
-
 
     return (
         <div className='material-info-container'>
             <table>
                 <thead>
                     <tr>
+                        <th>{jobsiteName}</th>
                         <th>Date List</th>
                         <th>Content</th>
                     </tr>

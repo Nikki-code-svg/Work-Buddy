@@ -3,10 +3,13 @@ import MaterialCard from './MaterialCard';
 import NewMaterial from './NewMaterial';
 import { useNavigate } from 'react-router-dom';
 
-function MaterialList({ search, setSearch, setSelectedMaterial, jobsiteId }) {
+function MaterialList({ search, setSearch, setSelectedMaterial, jobsiteId, jobsiteName  }) {
    const [materials, setMaterials] = useState([]);
-  
+ 
    const navigate = useNavigate();
+   if (!jobsiteName) {
+    return <div>No job site selected</div>;
+}
 
    useEffect(() => {
      fetch(`/api/jobsites/${jobsiteId}/materials`)
@@ -24,20 +27,21 @@ function MaterialList({ search, setSearch, setSelectedMaterial, jobsiteId }) {
    const filteredMaterials = materials.filter((material) =>
     material.datelist && material.datelist.toLowerCase().includes(search.toLowerCase())
    );
-    
-   const handleDelete = (id) => {
-    fetch(`/api/materials/${id}`, {
+   const handleDelete = (jobsiteId, materialId) => {
+    fetch(`/api/jobsites/${jobsiteId}/materials/${materialId}`, {
         method: 'DELETE',
     })
     .then(response => {
         if (response.ok) {
-            setMaterials(prevMaterials => prevMaterials.filter(material => material.id !== id));
+            setMaterials(prevMaterials => prevMaterials.filter(material => material.id !== materialId));
         } else {
-            console.error('Failed to delete the material');
+            response.json().then(data => console.error('Failed to delete the material:', data.error));
         }
     })
     .catch(error => console.error('Error deleting material:', error));
-   };
+};
+
+
 
    return (
     <main className="materiallist-container">
@@ -55,14 +59,14 @@ function MaterialList({ search, setSearch, setSelectedMaterial, jobsiteId }) {
                 />
             </div>
             <div className="material-cards">
-                <h2 className='material-title'>Materials Lists</h2>
+                <h2 className='material-title'>Materials for {jobsiteName}</h2>
                 {materials.length > 0 ? (
                     <div>
                         {filteredMaterials.map((material) => (
                             <MaterialCard
                                 key={material.id}
                                 material={material}
-                                handleDelete={() => handleDelete(material.id)}
+                                handleDelete={() => handleDelete(jobsiteId, material.id)}
                                 onClick={() => {
                                     setSelectedMaterial(material);
                                     setSearch('');

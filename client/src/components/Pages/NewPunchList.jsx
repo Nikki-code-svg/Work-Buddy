@@ -28,7 +28,7 @@ function NewPunchList({ handleAddItems }) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(form), // Sending form data directly without modifications
+            body: JSON.stringify(form),
         })
         .then(res => {
             if (!res.ok) {
