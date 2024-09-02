@@ -4,21 +4,21 @@ import PunchListCard from './PunchListCard';
 import CopyButton from '../ClipBoard';
 
 
-
-
-function PunchList() {
+function PunchList({jobsiteId, jobsiteName }) {
 
     const [ punchlist, setPunchlist ] = useState([])
 
     console.log(punchlist)
 
     useEffect(() => {
-        fetch('/api/punchlists')
+        fetch(`/api/jobsites/${jobsiteId}/punchlists`)
         .then(response => response.json())
         .then(data => setPunchlist(data))
         .catch(error => console.log('Error fetching data:', error))
 
-    }, []);
+    }, [jobsiteId]);
+    console.log('Jobsite ID:', jobsiteId);
+
     const handleAddItems = (newItems) => {
         console.log('New items:', newItems);
         setPunchlist(prevItems => [newItems, ...prevItems]);
@@ -26,7 +26,7 @@ function PunchList() {
     };
 
     const handleDelete = (id) => {
-        fetch(`/api/punchlists/${id}`, {
+        fetch(`/api/jobsites/${jobsiteId}/punchlists/${id}`, {
             method: 'DELETE',
         })
         .then(response => {
@@ -44,10 +44,10 @@ function PunchList() {
  return (
         <main className='punchlist-container'>
             <div>
-                <NewPunchList handleAddItems={handleAddItems} />
+                <NewPunchList handleAddItems={handleAddItems} jobsiteId={jobsiteId} />
             </div>
             <div>
-                <h2 className='punchlist-title'>Punch List</h2>
+                <h2 className='punchlist-title'>Punch List for {jobsiteName} </h2>
                 {punchlist.length > 0 ? (
                     <div>
                         {punchlist.map((punchlist) => 

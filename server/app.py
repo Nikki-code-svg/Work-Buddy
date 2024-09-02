@@ -189,7 +189,7 @@ def get_materials_by_jobsite(jobsite_id):
 def get_material(id):
 
     found_material = Material.query.where(Material.id == id).first()
-    
+
     if found_material:
         return found_material.to_dict(), 200
     else:
@@ -251,9 +251,10 @@ def delete_material(jobsite_id, id):
 
 # START OF PRINTS
 # READ
-@app.get('/api/prints')
-def all_prints():
-    print_list = Prints.query.all()
+@app.get('/api/jobsites/<int:jobsite_id>/prints')
+def all_prints(jobsite_id):
+
+    print_list = Prints.query.filter_by(jobsite_id=jobsite_id).all()
     print_dict = [ prints.to_dict() for prints in print_list ]
 
     return print_dict, 200
@@ -287,6 +288,8 @@ def create_print():
         return { 'error': str(e)}, 400
 
 
+
+
 # DELETE
 @app.delete('/api/prints/<int:id>')
 def delete_print(id):
@@ -305,12 +308,22 @@ def delete_print(id):
 
 # START OF PUNCHLIST
 # READ
-@app.get('/api/punchlists')
-def all_punchlists():
-      punchlist_list = PunchList.query.all()
-      punchlist_dict = [ punchlist.to_dict() for punchlist in punchlist_list ]
+@app.get('/api/jobsites/<int:jobsite_id>/punchlists')
+def all_punchlists(jobsite_id):
 
-      return punchlist_dict, 200
+     punchlist_list = PunchList.query.filter_by(jobsite_id=jobsite_id).all()
+     punchlist_dict = [ punchlist.to_dict() for punchlist in punchlist_list ]
+
+     return punchlist_dict, 200
+
+    
+# @app.get('/api/punchlists')
+# def all_punchlists():
+      
+#       punchlist_list = PunchList.query.all()
+#       punchlist_dict = [ punchlist.to_dict() for punchlist in punchlist_list ]
+
+#       return punchlist_dict, 200
 
 # READ BY ID
 @app.get('/api/punchlists/<int:id>')
@@ -323,57 +336,100 @@ def get_punchlist(id):
         return {"error": "Not found"}, 404
     
 # POST
-@app.post('/api/punchlists')
-def create_punchlist():
-    data = request.json
+# @app.post('/api/punchlists')
+# def create_punchlist():
+#     data = request.json
+
+#     try:
+#         new_punchlist = PunchList(name=data['name'])
+#         db.session.add(new_punchlist)
+#         db.session.commit()
+
+#         return new_punchlist.to_dict(), 201
+    
+#     except Exception as e:
+#         return { "error": str(e)}, 400
+    
+@app.post('/api/jobsites/<int:jobsite_id>/punchlists')
+def create_punchlist(jobsite_id):
+
+    data = request.get_json()
 
     try:
-        new_punchlist = PunchList(name=data['name'])
+        name = data['name']
+        new_punchlist = PunchList( name=name,  jobsite_id=jobsite_id)
         db.session.add(new_punchlist)
         db.session.commit()
-
-        return new_punchlist.to_dict(), 201
-    
+        return jsonify(new_punchlist.to_dict()), 201
+    except KeyError as e:
+        return jsonify({'error': f'Missing key: {e}'}), 400
     except Exception as e:
-        return { "error": str(e)}, 400
-    
+        return jsonify({'error': str(e)}), 400
     
 # PATCH
-@app.patch('/api/punchlists/<int:id>')
-def update_punchlist(id):
-    found_punchlist = PunchList.query.where(PunchList.id == id).first()
+# @app.patch('/api/punchlists/<int:id>')
+# def update_punchlist(id):
+#     found_punchlist = PunchList.query.where(PunchList.id == id).first()
 
-    if found_punchlist:
-        data = request.json
+#     if found_punchlist:
+#         data = request.json
 
-    try:
-        for key in data:
-            setattr( found_punchlist, key, data[key])
-            db.session.add(found_punchlist)
-            db.session.commit()
+#     try:
+#         for key in data:
+#             setattr( found_punchlist, key, data[key])
+#             db.session.add(found_punchlist)
+#             db.session.commit()
 
-            return found_punchlist.to_dict(), 202
+#             return found_punchlist.to_dict(), 202
         
-    except Exception as e:
-        return { 'error': str(e)}, 400
+#     except Exception as e:
+#         return { 'error': str(e)}, 400
     
+#     else:
+#         return { 'error': 'Could not find Punchlist'}, 404
+@app.patch('/api/jobsites/<int:jobsite_id>/punchlists/<int:id>')
+def update_punchlist(jobsite_id, id):
+
+    found_punchlist = PunchList.query.filter_by(id=id, jobsite_id=jobsite_id).first()
+
+    if  found_punchlist:
+        data = request.get_json()
+        try:
+            for key in data:
+                setattr( found_punchlist, key, data[key])
+            db.session.commit()
+            return  found_punchlist.to_dict(), 202
+        except Exception as e:
+            return {'error': str(e)}, 400
     else:
-        return { 'error': 'Could not find Punchlist'}, 404
+        return {'error': 'Material not found for this job site'}, 404
     
     
 # DELETE
-@app.delete('/api/punchlists/<int:id>')
-def delete_punchlist(id):
-    found_punchlist = PunchList.query.where(PunchList.id == id).first()
+# @app.delete('/api/punchlists/<int:id>')
+# def delete_punchlist(id):
+#     found_punchlist = PunchList.query.where(PunchList.id == id).first()
+
+#     if found_punchlist:
+#         db.session.delete(found_punchlist)
+#         db.session.commit()
+
+#         return {}, 204
+    
+#     else:
+#         return {'error': 'Not Found'}, 404
+
+@app.delete('/api/jobsites/<int:jobsite_id>/punchlists/<int:id>')
+def delete_punchlist(jobsite_id, id):
+
+    found_punchlist = PunchList.query.filter_by(id=id, jobsite_id=jobsite_id).first()
 
     if found_punchlist:
         db.session.delete(found_punchlist)
         db.session.commit()
-
         return {}, 204
-    
     else:
-        return {'error': 'Not Found'}, 404
+        return {'error': 'Material not found for this job site'}, 404
 
 # END OF PUNCHLIST
 

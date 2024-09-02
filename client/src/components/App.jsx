@@ -90,7 +90,20 @@ function App() {
                               /> 
                             : <Navigate to="/login" />} 
                     />
-                )}
+                    )}
+                {selectedJobsite && (
+                    <Route 
+                    path="/punchlist" 
+                    element={currentUser 
+                        ? <PunchList 
+                            loading={loading} 
+                            setLoading={setLoading} 
+                            jobsiteId={selectedJobsite.id} 
+                            jobsiteName={selectedJobsite.name} 
+                          /> 
+                        : <Navigate to="/login" />} 
+                    />
+                    )}
                 <Route 
                     path="/materials/:id" 
                     element={currentUser && selectedJobsite 
@@ -101,15 +114,7 @@ function App() {
                           /> 
                         : <Navigate to="/login" />} 
                 />
-                <Route 
-                    path="/punchlist" 
-                    element={currentUser 
-                        ? <PunchList 
-                            loading={loading} 
-                            setLoading={setLoading} 
-                          /> 
-                        : <Navigate to="/login" />} 
-                />
+                
                 <Route 
                     path="/prints" 
                     element={currentUser 

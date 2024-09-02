@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-function NewPunchList({ handleAddItems }) {
+function NewPunchList({ handleAddItems, jobsiteId }) {
 
     const [form, setForm] = useState({
         name: ''
@@ -23,7 +23,7 @@ function NewPunchList({ handleAddItems }) {
         e.preventDefault();
         setIsLoading(true);
     
-        fetch('/api/punchlists', {
+        fetch(`/api/jobsites/${jobsiteId}/punchlists`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
