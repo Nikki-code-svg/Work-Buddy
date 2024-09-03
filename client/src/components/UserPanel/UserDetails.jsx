@@ -17,7 +17,13 @@ function UserDetails({currentUser, setCurrentUser, search,  setSearch, setSelect
         <div className='user-details'>
          
           <h2 className='user-name-title'>Welcome {currentUser.username}!</h2>
-           <JobsiteList  search={search}  setSearch={setSearch} setSelectedJobsite={setSelectedJobsite}/>
+           <JobsiteList  
+           search={search}  
+           setSearch={setSearch} 
+           setSelectedJobsite={setSelectedJobsite}
+        
+           
+           />
         </div>
         
       )

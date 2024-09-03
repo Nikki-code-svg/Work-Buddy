@@ -145,7 +145,10 @@ def update_jobsite(id):
 
         try:
             for key in data:
-                setattr(found_jobsite, key, data[key])
+                if hasattr(found_jobsite, key):  
+                    setattr(found_jobsite, key, data[key])
+                else:
+                    return {"error": f"Invalid field: {key}"}, 400
 
             db.session.add(found_jobsite)
             db.session.commit()
@@ -153,7 +156,9 @@ def update_jobsite(id):
             return found_jobsite.to_dict(), 202
 
         except Exception as e:
-            return {"error": str(e)}, 400
+            
+            print(f"Error updating jobsite: {e}")
+            return {"error": "An error occurred while updating the jobsite"}, 400
 
     else:
         return {"error": "Could not find JobSite"}, 404
@@ -288,8 +293,6 @@ def create_print():
         return { 'error': str(e)}, 400
 
 
-
-
 # DELETE
 @app.delete('/api/prints/<int:id>')
 def delete_print(id):
@@ -316,15 +319,6 @@ def all_punchlists(jobsite_id):
 
      return punchlist_dict, 200
 
-    
-# @app.get('/api/punchlists')
-# def all_punchlists():
-      
-#       punchlist_list = PunchList.query.all()
-#       punchlist_dict = [ punchlist.to_dict() for punchlist in punchlist_list ]
-
-#       return punchlist_dict, 200
-
 # READ BY ID
 @app.get('/api/punchlists/<int:id>')
 def get_punchlist(id):
@@ -336,20 +330,6 @@ def get_punchlist(id):
         return {"error": "Not found"}, 404
     
 # POST
-# @app.post('/api/punchlists')
-# def create_punchlist():
-#     data = request.json
-
-#     try:
-#         new_punchlist = PunchList(name=data['name'])
-#         db.session.add(new_punchlist)
-#         db.session.commit()
-
-#         return new_punchlist.to_dict(), 201
-    
-#     except Exception as e:
-#         return { "error": str(e)}, 400
-    
 @app.post('/api/jobsites/<int:jobsite_id>/punchlists')
 def create_punchlist(jobsite_id):
 
@@ -367,26 +347,6 @@ def create_punchlist(jobsite_id):
         return jsonify({'error': str(e)}), 400
     
 # PATCH
-# @app.patch('/api/punchlists/<int:id>')
-# def update_punchlist(id):
-#     found_punchlist = PunchList.query.where(PunchList.id == id).first()
-
-#     if found_punchlist:
-#         data = request.json
-
-#     try:
-#         for key in data:
-#             setattr( found_punchlist, key, data[key])
-#             db.session.add(found_punchlist)
-#             db.session.commit()
-
-#             return found_punchlist.to_dict(), 202
-        
-#     except Exception as e:
-#         return { 'error': str(e)}, 400
-    
-#     else:
-#         return { 'error': 'Could not find Punchlist'}, 404
 @app.patch('/api/jobsites/<int:jobsite_id>/punchlists/<int:id>')
 def update_punchlist(jobsite_id, id):
 
@@ -406,19 +366,6 @@ def update_punchlist(jobsite_id, id):
     
     
 # DELETE
-# @app.delete('/api/punchlists/<int:id>')
-# def delete_punchlist(id):
-#     found_punchlist = PunchList.query.where(PunchList.id == id).first()
-
-#     if found_punchlist:
-#         db.session.delete(found_punchlist)
-#         db.session.commit()
-
-#         return {}, 204
-    
-#     else:
-#         return {'error': 'Not Found'}, 404
-
 @app.delete('/api/jobsites/<int:jobsite_id>/punchlists/<int:id>')
 def delete_punchlist(jobsite_id, id):
 

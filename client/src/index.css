@@ -1,7 +1,17 @@
-/* parent
+
+/* Sign in/Login */
+.signup-container, .login-container {
+  background: url('/src/components/UserPanel/images/construction-picture.JPG') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; /
+}
 /* Parent */
+/* User form styling */
 .user-form {
-  background-color: #FFFBDA;
+  background-color: #E3E1D9;
   margin: 2em auto;
   padding: 2em;
   border-radius: 10px;
@@ -9,8 +19,83 @@
   max-width: 400px;
   display: flex;
   flex-direction: column;
+}
+
+/* Input fields styling */
+.signup-input, .login-input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px; 
+  border: 1px solid #ddd; 
+  border-radius: 10px; 
+  font-size: 16px;
+  color: #333; 
+  box-sizing: border-box; 
+  transition: border-color 0.3s ease; 
+}
+
+.signup-input:focus, .login-input:focus {
+  border-color: #ED9455; 
+  outline: none; 
+}
+
+
+/* login title name */
+.login {
+  align-content: center;
+
+}
+
+
+/* Login submit button */
+.submitbtnL {
+  background-color:#FFBB70;
+  padding: 15px;
+  border-radius: 10px;
+
+}
+
+.submitbtnL:hover {
+  background-color: #ED9455;
+  transform: scale(1.05);
+}
+
+/* sign up submit button */
+.signbtn {
+  background-color:#FFBB70;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.signbtn:hover {
+  background-color: #ED9455;
+  transform: scale(1.05);
+}
+
+/* toggle button between login and sign up */
+.signupbtn {
+  margin-top: 1em;
+  color:#FFBB70;
+  border: none;
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+  margin-top: 10px; 
  
 }
+.signupbtn:hover{
+  background-color:#ED9455;
+}
+
+.signupbtn:focus {
+  outline: none; 
+}
+
+
+
 
 /* Title */
 .title {
@@ -29,14 +114,7 @@
   text-align: center;
 }
 
-.login-signup{
-  background: #fff;
-  border-radius: 5px;
-  padding: 0.75em;
-  margin-top: 1em;
-  transition: background-color 0.3s;
-}
-
+ /* navbar */
  .navbar input:focus {
   background-color: #FFF8E8;
   outline: none;
@@ -54,19 +132,10 @@
 }
 
 
-.user-form .submitbtnL[type="submit"]:hover {
-  background-color: #ED9455;
-  transform: scale(1.05);
-}
 
-/* Sign in/Login */
-.login {
-  align-content: center;
-}
-.signupbtn {
-  margin-top: 1em;
- 
-}
+
+
+
 
 .flex-row {
   display: flex;

@@ -8,8 +8,10 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
 
     const [isEditable, setIsEditable] = useState(false);
     const [inputValues, setInputValues] = useState({});
+
     console.log(jobsite)
     useEffect(() => {
+        
         fetch(`/api/jobsites/${id}`)
             .then(res => {
                 if (res.ok) {
@@ -22,11 +24,12 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
                 setJobsite(data);
                 setSelectedJobsite(data); 
                 setInputValues(data);
+                
             })
             .catch(error => {
                 setError(error.message);
             });
-    }, [id, setSelectedJobsite]);
+    }, [id,  setSelectedJobsite]);
 
     const handleInputChange = (key, value) => {
         setInputValues(prev => ({
@@ -35,15 +38,19 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
         }));
     };
 
-    const toggleEditMode = () => {
+ 
+ toggleEditMode = () => {
         if (isEditable) {
-            // Send PATCH request to update jobsite data
+            const { id, images, materials, prints, punchlists, user, user_id, ...updateData } = inputValues;
+            
+            console.log("Updating jobsite with data:", updateData); 
+    
             fetch(`/api/jobsites/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(inputValues),
+                body: JSON.stringify(updateData),
             })
             .then(res => {
                 if (!res.ok) {
@@ -52,8 +59,9 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
                 return res.json();
             })
             .then(data => {
-                setJobsite(data); // Update the jobsite state with the updated data
-                setIsEditable(false); // Exit edit mode
+                setJobsite(data); 
+                setIsEditable(false); 
+                setError(null);
             })
             .catch(error => {
                 setError(error.message);
@@ -62,6 +70,7 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
             setIsEditable(true);
         }
     };
+    
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error: {error}</p>;

@@ -4,7 +4,7 @@ import JobCard from './JobCard';
 import NewJob from './NewJob';
 import { useNavigate } from 'react-router-dom';
 
-function JobsiteList({ search, setSearch, setSelectedJobsite }) {
+function JobsiteList({ search, setSearch, setSelectedJobsite}) {
    const [jobsites, setJobsites] = useState([]);
    const navigate = useNavigate();
    console.log(search)

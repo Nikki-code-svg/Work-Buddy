@@ -41,6 +41,7 @@ function Signup({ setCurrentUser }) {
       <h2>Signup</h2>
 
       <input
+        className='signup-input'
         type="text"
         onChange={e => setUsername(e.target.value)}
         value={username}
@@ -48,6 +49,7 @@ function Signup({ setCurrentUser }) {
       />
 
       <input
+        className='signup-input'
         type="password"
         onChange={e => setPassword(e.target.value)}
         value={password}
@@ -55,6 +57,7 @@ function Signup({ setCurrentUser }) {
       />
 
       <input
+        className='signbtn'
         type="submit"
         value='Signup'
       />

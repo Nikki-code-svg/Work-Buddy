@@ -3,18 +3,21 @@ import Signup from './Signup';
 import Login from './Login'
 import UserDetails from "./UserDetails";
 
+
 function UserPanel({ currentUser, setCurrentUser }) {
   const [showSignup, setShowSignup] = useState(false);
 
   if (!currentUser) {
     if (showSignup) {
       return (
+        <div className="signup-container">
         <Signup setCurrentUser={setCurrentUser} setShowSignup={setShowSignup} />
+        </div>
       );
     } else {
       return (
         <div className="login-container">
-          <Login setCurrentUser={setCurrentUser} />
+          <Login setCurrentUser={setCurrentUser}   style={{ backgroundImage: `url(${constructionImage})` }}/>
           <p>
             Don't have an account?{' '}
             <button onClick={() => setShowSignup(true)} className="signup-link">
