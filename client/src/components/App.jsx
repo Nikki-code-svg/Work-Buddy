@@ -4,13 +4,14 @@ import NavBar from './NavBar';
 import Login from './UserPanel/Login';
 import Signup from './UserPanel/Signup';
 import JobsiteInfo from "./Pages/JobsiteInfo";
+import JobsiteList from "./Pages/JobsiteList";
 import UserDetails from './UserPanel/UserDetails';
 import MaterialInfo from "./Pages/MaterialInfo";
 import MaterialList from "./Pages/MaterialList";
 import PunchList from "./Pages/PunchList";
 import Prints from "./Pages/Prints";
+import DisplayImage from "./DisplayImage";
 
-// import UploadWidget from "./UploadWidget";
 
 function App() {
     const [search, setSearch] = useState('');
@@ -62,15 +63,28 @@ function App() {
                             setSearch={setSearch} 
                             search={search} 
                             setCurrentUser={setCurrentUser} 
+                            loading={loading} 
+                            setLoading={setLoading} 
                           /> 
                         : <Navigate to="/login" />} 
                 />
                 <Route path="/login" element={<Login setCurrentUser={setCurrentUser} />} />
                 <Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} />} />
+               
+                <Route 
+                    path="/jobsites" 
+                    element={currentUser 
+                        ? <JobsiteList
+                            search={search}  
+                            setSearch={setSearch} 
+                            setSelectedJobsite={setSelectedJobsite} 
+                          /> 
+                        : <Navigate to="/login" />} 
+                />
                 <Route 
                     path="/jobsite/:id" 
                     element={currentUser 
-                        ? <JobsiteInfo 
+                        ? <JobsiteInfo
                             loading={loading} 
                             setLoading={setLoading} 
                             setSelectedJobsite={setSelectedJobsite} 
@@ -105,6 +119,32 @@ function App() {
                         : <Navigate to="/login" />} 
                     />
                     )}
+                    {selectedJobsite && (
+                    <Route 
+                    path="/prints" 
+                    element={currentUser 
+                        ? <Prints 
+                            loading={loading} 
+                            setLoading={setLoading} 
+                            jobsiteId={selectedJobsite.id} 
+                          /> 
+                        : <Navigate to="/login" />} 
+                    />
+
+                    )}
+                    {selectedJobsite && (
+                    <Route 
+                    path="/print/:id" 
+                    element={currentUser 
+                        ? <DisplayImage 
+                            loading={loading} 
+                            setLoading={setLoading} 
+                            jobsiteId={selectedJobsite.id} 
+                          /> 
+                        : <Navigate to="/login" />} 
+                    />
+                )}
+
                 <Route 
                     path="/materials/:id" 
                     element={currentUser && selectedJobsite 
@@ -116,15 +156,7 @@ function App() {
                         : <Navigate to="/login" />} 
                 />
                 
-                <Route 
-                    path="/prints" 
-                    element={currentUser 
-                        ? <Prints 
-                            loading={loading} 
-                            setLoading={setLoading} 
-                          /> 
-                        : <Navigate to="/login" />} 
-                />
+                
                 <Route 
                     path="/image" 
                     element={currentUser 
@@ -140,6 +172,10 @@ function App() {
 }
 
 export default App;
+
+
+
+
 
 
 

@@ -1,14 +1,153 @@
 
 /* Sign in/Login */
+/* .signup-container, .login-container {
+  background: url('/src/components/UserPanel/images/construction-picture.JPG') no-repeat center center;
+  background-size: cover;
+  min-height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+} */
+/* Parent */
+/* User form styling */
+/* .user-form {
+  background-color: #E3E1D9;
+  margin: 2em auto;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+} */
+
+/* Input fields styling */
+/* .signup-input, .login-input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px; 
+  border: 1px solid #ddd; 
+  border-radius: 10px; 
+  font-size: 16px;
+  color: #333; 
+  box-sizing: border-box; 
+  transition: border-color 0.3s ease; 
+} */
+
+/* .signup-input:focus, .login-input:focus {
+  border-color: #ED9455; 
+  outline: none; 
+} */
+
+
+/* login title name */
+/* .login {
+  align-content: center;
+
+} */
+
+
+/* Login submit button */
+/* .submitbtnL {
+  background-color:#FFBB70;
+  padding: 15px;
+  border-radius: 10px;
+
+} */
+
+/* .submitbtnL:hover {
+  background-color: #ED9455;
+  transform: scale(1.05);
+} */
+
+/* sign up submit button */
+/* .signbtn {
+  background-color:#FFBB70;
+  padding: 15px;
+  border-radius: 10px;
+} */
+
+/* .signbtn:hover {
+  background-color: #ED9455;
+  transform: scale(1.05);
+} */
+
+/* toggle button between login and sign up */
+/* .signupbtn {
+  margin-top: 1em;
+  color:#FFBB70;
+  border: none;
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+  margin-top: 10px; 
+ 
+} */
+/* .signupbtn:hover{
+  background-color:#ED9455;
+} */
+
+/* .signupbtn:focus {
+  outline: none; 
+} */
+
+
+
+
+/* Title */
+/* .title {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 1em; 
+} */
+
+/* Login and Sign Up Buttons */
+/* .flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  margin-top: 2em;
+  text-align: center;
+} */
+
+ /* navbar */
+ /* .navbar input:focus {
+  background-color: #FFF8E8;
+  outline: none;
+} */
+
+
+ /* .navbar  {
+  background-color: #FFBB70;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75em;
+  margin-top: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+} */
+
+/* .flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  margin-top: 2em; 
+} */
+/* Sign in/Login */
 .signup-container, .login-container {
   background: url('/src/components/UserPanel/images/construction-picture.JPG') no-repeat center center;
   background-size: cover;
   min-height: 100vh; 
   display: flex; 
   align-items: center; 
-  justify-content: center; /
+  justify-content: center; 
 }
-/* Parent */
+
 /* User form styling */
 .user-form {
   background-color: #E3E1D9;
@@ -40,62 +179,47 @@
   outline: none; 
 }
 
-
-/* login title name */
+/* Login title name */
 .login {
   align-content: center;
-
 }
-
 
 /* Login submit button */
-.submitbtnL {
-  background-color:#FFBB70;
+.submitbtnL, .signbtn {
+  background-color: #FFBB70;
   padding: 15px;
   border-radius: 10px;
-
+  border: none;
+  color: #333; /* Ensure text color contrasts with the button */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.1s;
 }
 
-.submitbtnL:hover {
+.submitbtnL:hover, .signbtn:hover {
   background-color: #ED9455;
   transform: scale(1.05);
 }
 
-/* sign up submit button */
-.signbtn {
-  background-color:#FFBB70;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-.signbtn:hover {
-  background-color: #ED9455;
-  transform: scale(1.05);
-}
-
-/* toggle button between login and sign up */
+/* Toggle button between login and sign up */
 .signupbtn {
   margin-top: 1em;
-  color:#FFBB70;
+  color: #FFBB70;
   border: none;
   padding: 10px 20px; 
   border-radius: 5px; 
   font-size: 16px; 
   cursor: pointer;
   transition: background-color 0.3s ease; 
-  margin-top: 10px; 
- 
 }
-.signupbtn:hover{
-  background-color:#ED9455;
+
+.signupbtn:hover {
+  background-color: #ED9455;
 }
 
 .signupbtn:focus {
   outline: none; 
 }
-
-
-
 
 /* Title */
 .title {
@@ -114,14 +238,13 @@
   text-align: center;
 }
 
- /* navbar */
- .navbar input:focus {
+/* Navbar */
+.navbar input:focus {
   background-color: #FFF8E8;
   outline: none;
 }
 
-
- .navbar  {
+.navbar {
   background-color: #FFBB70;
   border: none;
   border-radius: 5px;
@@ -131,19 +254,117 @@
   transition: background-color 0.3s, transform 0.1s;
 }
 
+/* Media Queries */
 
+/* Small devices (phones, 600px and up) */
+@media (max-width: 600px) {
+  .user-form {
+    padding: 1em;
+    max-width: 90%;
+  }
 
+  .signup-input, .login-input {
+    font-size: 14px;
+    padding: 10px;
+  }
 
+  .submitbtnL, .signbtn, .signupbtn {
+    font-size: 14px;
+    padding: 12px;
+  }
 
+  .title {
+    font-size: 2em;
+  }
+}
 
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 1200px) {
+  .user-form {
+    padding: 1.5em;
+    max-width: 80%;
+  }
 
-.flex-row {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-  margin-top: 2em; 
+  .signup-input, .login-input {
+    font-size: 15px;
+    padding: 11px;
+  }
+
+  .submitbtnL, .signbtn, .signupbtn {
+    font-size: 15px;
+    padding: 13px;
+  }
+
+  .title {
+    font-size: 2.5em;
+  }
+}
+
+/* Large devices (desktops, 1200px and up) */
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .user-form {
+    padding: 2em;
+    max-width: 70%;
+  }
+
+  .signup-input, .login-input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .submitbtnL, .signbtn, .signupbtn {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 3em;
+  }
+}
+
+/* Extra Large devices (large screens, 1600px and up) */
+@media (min-width: 1600px) {
+  .user-form {
+    padding: 2.5em;
+    max-width: 50%;
+  }
+
+  .signup-input, .login-input {
+    font-size: 17px;
+    padding: 14px;
+  }
+
+  .submitbtnL, .signbtn, .signupbtn {
+    font-size: 17px;
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 3.5em;
+  }
+}
+
+/* 4K screens (3840px wide and up) */
+@media (min-width: 2560px) {
+  .user-form {
+    padding: 3em;
+    max-width: 40%;
+  }
+
+  .signup-input, .login-input {
+    font-size: 18px;
+    padding: 16px;
+  }
+
+  .submitbtnL, .signbtn, .signupbtn {
+    font-size: 18px;
+    padding: 18px;
+  }
+
+  .title {
+    font-size: 4em;
+  }
 }
 
 
-
+ 

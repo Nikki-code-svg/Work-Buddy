@@ -81,13 +81,14 @@ function MaterialInfo({ loading, setLoading, jobsiteName }) {
             <table>
                 <thead>
                     <tr>
-                        <th>{jobsiteName}</th>
-                        <th>Date List</th>
-                        <th>Content</th>
+                        <th className='table-h-m'>Name</th>
+                        <th className='table-h-m'>Date</th>
+                        <th className='table-h-m'>Material</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                        <td className='jobsite-th'>{jobsiteName}</td>
                         <td>
                             {isEditable ? (
                                 <input
@@ -118,7 +119,9 @@ function MaterialInfo({ loading, setLoading, jobsiteName }) {
                     </tr>
                 </tbody>
             </table>
-            <button onClick={toggleEditMode}>
+            <button 
+                className='edit-btn-m'
+                onClick={toggleEditMode}>
                 {isEditable ? 'Save' : 'Edit Data'}
             </button>
         </div>

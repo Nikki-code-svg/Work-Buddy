@@ -58,7 +58,7 @@ function PunchList({jobsiteId, jobsiteName }) {
                          />
                         
                         )}
-                         <CopyButton textToCopy={allPunchlistText} />
+                       
                     </div>
                 ) : (
                     <p>No punchlist available</p>

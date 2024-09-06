@@ -1,3 +1,211 @@
+/* Mobile First */
+body {
+  font-size: 16px;
+}
+
+@media (min-width: 600px) {
+  body {
+      font-size: 18px;
+  }
+ 
+}
+
+@media (min-width: 1200px) {
+  body {
+      font-size: 20px;
+  }
+}
+
+/* Large TV screens (over 1600px wide) */
+@media (min-width: 1600px) {
+  body {
+    font-size: 20px; /* Larger font size for readability on very large screens */
+  }
+
+  .navbar {
+    padding: 1.5em; /* Increase padding for more space */
+    font-size: 2rem; 
+  }
+
+  .navbar a, .navbar button {
+    padding: 0.75em 1.5em; /* Adjust padding for larger screen */
+  }
+
+  .jobsitelist-container,
+  .materiallist-container,
+  .punchlist-container {
+    padding: 2em; /* More padding for larger containers */
+  }
+
+  .newjob, .searchbar-container,
+  .punchlist-card {
+    max-width: 50%; /* Reduce the max-width to better utilize space on large screens */
+  }
+  .checkbox {
+    transform: scale(1.5); /* Increase or decrease the number for size */
+    margin: 20px;
+  }
+  .create-jobsite-wrapper {
+    max-width: 800px; /* Wider wrapper for larger screens */
+  }
+
+  .job-card-button, .materialbtn, .deletebtn,
+  .punchlist-card {
+    font-size: 1.2em; /* Larger buttons for better usability */
+    padding: 1em; /* Increase padding for larger buttons */
+  }
+
+  .copybtnM {
+    display: flex;
+    margin-left: auto;
+    font-size: 1.2em; /* Larger buttons for better usability */
+    padding: 1em; 
+  }
+
+  .copybtn {
+    font-size: 1.5em;
+    padding: 1.5em;
+  }
+
+  .edit-btn-m {
+    font-size: 1.2em; /* Larger buttons for better usability */
+    padding: 1em; 
+  }
+  .punchbtn {
+    font-size: 1.2em;
+    padding: 1em;
+  }
+
+  .search-input-j {
+    font-size: 1.5em; /* Larger buttons for better usability */
+    padding: 1em;
+  }
+
+  .seach-input-m {
+    font-size: 1.2em; /* Larger buttons for better usability */
+    padding: 1em;
+  }
+
+  .punch-input {
+    font-size: 1.5em; /* Larger buttons for better usability */
+    padding: 3em;
+  }
+
+  .label-item-p {
+    font-size: 2em;
+  }
+  .user-name-title{
+    font-size: 2.5em;
+    padding: 3em;
+  }
+
+  .textarea-material{
+    font-size: 1em; /* Larger buttons for better usability */
+    padding: 1em;
+  }
+
+  table th, table td {
+    font-size: 2rem; 
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+/* Ensure larger tables are fully visible */
+  thead, tbody {
+    
+    display: block;
+    overflow-x: auto;
+  }
+  th, td {
+
+    padding: 20px;
+    font-size: 3rem; 
+ 
+  }
+  tr {
+    display: flex;
+    flex-direction: row; 
+    margin-bottom: 50px;
+}
+}
+/* 4K and very large widescreens (over 2560px wide) */
+@media (min-width: 2560px) {
+  body {
+    font-size: 20px; /* Larger font size for very large screens */
+  }
+
+  .navbar {
+    padding: 2em; /* Further increase padding for large screens */
+  }
+
+  .navbar a, .navbar button {
+    padding: 1em 2em; /* Adjust padding for very large screens */
+  }
+
+  .jobsitelist-container,
+  .materiallist-container,
+  .punchlist-container {
+    padding: 2.5em; /* Even more padding for very large containers */
+    
+  }
+ 
+  .newjob, .searchbar-container,
+  .punchlist-card button {
+    max-width: 35%; /* Adjust max-width for very large screens */
+  }
+ 
+
+  .create-jobsite-wrapper {
+    max-width: 1000px; /* Wider wrapper for very large screens */
+  }
+
+  .job-card-button, .materialbtn, .deletebtn,
+  .punchlist-card  {
+    font-size: 1.5em; /* Larger buttons for better usability */
+    padding: 1.25em; /* Increase padding for very large buttons */
+  }
+
+  .punchlist-card {
+    font-size: 2em; /* Larger buttons for better usability */
+    padding: 1.25em; 
+  }
+
+  .checkbox {
+    transform: scale(2.0); /* Increase or decrease the number for size */
+    margin: 20px;
+  }
+  .punchbtn-delete {
+    font-size: 1em;
+    padding: 1em;
+  }
+ 
+
+   table th, table td {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+
+  /* Ensure larger tables are fully visible */
+  thead, tbody {
+    display: block;
+    overflow-x: auto;
+  }
+
+  th, td {
+    padding: 20px;
+    font-size: 0.9rem; 
+ 
+}
+
+  tr {
+    display: flex;
+    flex-direction: row; 
+    margin-bottom: 50px;
+}
+}
+
+
 
 /* Navbar Container */
 .navbar {
@@ -24,7 +232,7 @@
 }
 
 
- @media (max-width: 768px) {
+ @media (max-width: 768px ) {    
   .navbar {
     flex-direction: column; 
     align-items: stretch; 
@@ -63,7 +271,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px;
+ 
+  gap: 1em;
+  padding: 1em;
 }
 
 .newjob {
@@ -81,7 +291,11 @@
   margin-bottom: 20px;
 }
 
-
+.search-input-j{
+    border: 2px solid #FFBB70;
+    border-radius: 5px;
+}
+   
 
 @media (max-width: 768px) {
   .jobsitelist-container {
@@ -93,6 +307,7 @@
     margin-right: 0;
     margin-bottom: 20px;
   }
+  
 }
 
 
@@ -104,20 +319,21 @@
 }
 
 
+
 .job-card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 1em;
-}
-
-.job-card-link {
-  flex: 1;
-  margin: 0.5em;
+  gap: 1em;
+  padding: 0.5em;
+  border: 2px solid #ddd;
+  border-radius: 5px;
 }
 
 .job-card-button {
-  width: 100%;
+  flex: 6;
   padding: 1em;
   border: none;
   border-radius: 5px;
@@ -131,15 +347,17 @@
 
 .job-card-button:hover {
   background-color: #ED9455;
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
 }
 
 .delete-button {
-  padding: 0.25em 0.5em; 
-  border: none;
-  border-radius: 5px;
+  flex: 0;
   background-color: red;
   color: white;
+  border: none;
+  padding:  0.5em;  
+  text-align: center;
+  border-radius: 5px;
   cursor: pointer;
   margin-top: 0.5em;
   font-size: 0.75em; 
@@ -190,6 +408,9 @@ form {
   border: 2px solid #ccc;
   width: 90%;
 }
+.new-form-group input:hover{
+  background-color:  #ED9455;
+}
 
 button {
   background-color: #FFBB70;
@@ -229,6 +450,7 @@ button:hover {
 
 .materiallist-container {
   display: flex;
+  flex-wrap: wrap; 
   justify-content: space-between; 
   gap: 1em;
   padding: 1em;
@@ -236,6 +458,7 @@ button:hover {
 
 .equal-section {
   flex: 1; 
+
 }
 
 .material-section {
@@ -266,14 +489,20 @@ button:hover {
 
 
 .new-material {
-    flex: 1;
+    flex: 2;
     max-width: 400px;
+    margin-right: 20px;
   }
 
   .material-search-bar {
     flex: 1;
-    width: 60%;
+    width: 55%;
+  
     
+  }
+  .seach-input-m {
+    border: 2px solid #FFBB70;
+    border-radius: 5px;
   }
 
   .material-cards {
@@ -281,19 +510,15 @@ button:hover {
   }
 
 
-@media (max-width: 600px) {
-  .materiallist-container {
-    padding: 0.5em;
-  }
-}
 
 .material-card {
-  display: flex;
+  display: flex; 
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1em;
   gap: 1em;
   padding: 0.5em;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   border-radius: 5px;
 }
 
@@ -335,8 +560,16 @@ button:hover {
   flex-direction: column;
   align-items: flex-start;
 }
+
+@media (max-width: 768px) {
+  .material-info-container{
+    flex-direction: column;
+  }
+}
 .copybtnM {
+  display: flex;
   margin-left: auto;
+
 }
 
 
@@ -422,7 +655,7 @@ tbody tr:nth-child(even) {
 @media (max-width: 768px) {
   th, td {
       padding: 10px;
-      font-size: 0.9rem; 
+      font-size: 1rem; 
   }
 
   tbody, thead {

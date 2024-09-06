@@ -51,6 +51,7 @@ function MaterialList({ search, setSearch, setSelectedMaterial, jobsiteId, jobsi
         <div className="equal-section material-section">
             <div className="material-search-bar">
                 <input
+                    className='seach-input-m'
                     type="text"
                     placeholder="Search Materials"
                     value={search}

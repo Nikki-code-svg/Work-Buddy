@@ -39,7 +39,7 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
     };
 
  
- toggleEditMode = () => {
+ let toggleEditMode = () => {
         if (isEditable) {
             const { id, images, materials, prints, punchlists, user, user_id, ...updateData } = inputValues;
             
@@ -163,7 +163,9 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
                     </tr>
                 </tbody>
             </table>
-            <button onClick={toggleEditMode}>
+            <button 
+                className='edit-btn-m'
+                onClick={toggleEditMode}>
                 {isEditable ? 'Save' : 'Edit Data'}
             </button>
         </div>

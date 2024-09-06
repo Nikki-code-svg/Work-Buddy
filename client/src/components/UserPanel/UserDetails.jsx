@@ -2,7 +2,7 @@ import React from 'react'
 import JobsiteList from '../Pages/JobsiteList'
 
 
-function UserDetails({currentUser, setCurrentUser, search,  setSearch, setSelectedJobsite}) {
+function UserDetails({currentUser, setCurrentUser, search,  setSearch, setSelectedJobsite }) {
 
     function handleLogout() {
       setCurrentUser(null) 
@@ -20,10 +20,9 @@ function UserDetails({currentUser, setCurrentUser, search,  setSearch, setSelect
            <JobsiteList  
            search={search}  
            setSearch={setSearch} 
-           setSelectedJobsite={setSelectedJobsite}
-        
-           
-           />
+          //  setSelectedJobsite={setSelectedJobsite}
+          
+        />
         </div>
         
       )

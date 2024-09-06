@@ -51,6 +51,7 @@ function NewJob({ handleAddJobsite}) {
           })
           .catch(error => {
             setIsLoading(false);
+            setForm({ datelist: '', content: '' });
             setErrors(['Something went wrong! Please try again.']);
           });
       }

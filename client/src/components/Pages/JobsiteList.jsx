@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 function JobsiteList({ search, setSearch, setSelectedJobsite}) {
    const [jobsites, setJobsites] = useState([]);
    const navigate = useNavigate();
-   console.log(search)
+  
    useEffect(() => {
      fetch('/api/jobsites')
      .then(response => response.json())
@@ -19,6 +19,7 @@ function JobsiteList({ search, setSearch, setSelectedJobsite}) {
     setJobsites(prevJobsites => [newJob, ...prevJobsites]);
     navigate(`/jobsites/${newJob.id}`);
    };
+   console.log(handleAddJobsite)
 
    const filteredJobsites = jobsites.filter((jobsite) =>
       jobsite.name.toLowerCase().includes(search.toLowerCase())
@@ -42,12 +43,13 @@ function JobsiteList({ search, setSearch, setSelectedJobsite}) {
 
    return (
         <main className="jobsitelist-container">
-            <div className=' equal-section newjob'>
+        <div className=' equal-section newjob'>
               <NewJob handleAddJobsite={handleAddJobsite} />
             </div>
             <div className='equal-section newjob'>
             <div className='searchbar-josbsite'>
                 <input
+                    className='search-input-j'
                     type="text"
                     placeholder="Search Jobsites"
                     value={search}
@@ -67,7 +69,7 @@ function JobsiteList({ search, setSearch, setSelectedJobsite}) {
                             onClick={() => {
                                 setSelectedJobsite(jobsite);
                                 setSearch('');
-                                navigate(`/jobsite/${jobsite.id}`);
+                                navigate(`/jobsites/${jobsite.id}`);
                             }}
                         />
                     ))}

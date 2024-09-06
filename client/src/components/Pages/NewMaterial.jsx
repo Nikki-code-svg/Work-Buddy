@@ -76,6 +76,7 @@ function NewMaterial({ handleAddMaterial, jobsiteId }) {
                     <div className="new-form-group">
                         <label htmlFor="content">List:</label>
                         <textarea
+                            className='textarea-material'
                             id="content"
                             name="content"
                             value={form.content}

@@ -8,6 +8,7 @@ function JobCard({ jobsite, handleDelete }) {
                 <button className='jobsiteNbtn'>{jobsite.name}</button>
             </Link>
             <button 
+                className='jobDbtn'
                 onClick={() => handleDelete(jobsite.id)} 
                 style={{ marginLeft: '10px', backgroundColor: 'red', color: 'white' }}
             >

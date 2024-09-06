@@ -80,6 +80,7 @@ class Prints(db.Model, SerializerMixin):
     __tablename__ = 'prints_table'
 
     id = db.Column(db.Integer, primary_key=True)
+   
     url = db.Column(db.String, nullable=False)
 
     jobsite_id = db.Column(db.Integer, db.ForeignKey('jobsite_table.id'))

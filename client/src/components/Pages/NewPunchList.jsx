@@ -63,8 +63,11 @@ function NewPunchList({ handleAddItems, jobsiteId }) {
                 )}
                 <form onSubmit={handleSubmit}>
                     <div className="new-form-group">
-                        <label htmlFor="name">Item:</label>
+                        <label 
+                           className="label-item-p"
+                           htmlFor="name">Item:</label>
                         <input
+                            className="punch-input"
                             type="text"
                             id="name"
                             name="name"

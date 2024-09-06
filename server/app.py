@@ -12,10 +12,17 @@ from werkzeug.security import generate_password_hash
 from models import User, JobSite, Material, Image, Prints, PunchList
 from config import app, db, bcrypt 
 from datetime import datetime
+from flask import Flask, request, jsonify
+import cloudinary
+import cloudinary.uploader
+from cloudinary.utils import cloudinary_url
+import logging
 
 # Local imports
 
 # Add your model imports
+# Cloudinary configuration
+
 
 
 # Views go here!
@@ -82,6 +89,7 @@ def logout():
 # READ
 @app.get('/api/jobsites')
 def all_jobsites():
+
     jobsite_list = JobSite.query.all()
     jobsite_dict = [ jobsite.to_dict() for jobsite in jobsite_list ]
 
@@ -97,7 +105,6 @@ def get_jobsite(id):
     else:
         return jsonify({ "message": "Jobsite not found" }), 404
     
-
 # POST
 @app.post('/api/jobsites')
 def create_jobsite():
@@ -255,58 +262,87 @@ def delete_material(jobsite_id, id):
 
 
 # START OF PRINTS
-# READ
+# # READ
+
 @app.get('/api/jobsites/<int:jobsite_id>/prints')
-def all_prints(jobsite_id):
+def get_prints(jobsite_id):
+    print(f"Fetching prints for jobsite_id: {jobsite_id}")  # Debugging line
+    prints = Prints.query.filter_by(jobsite_id=jobsite_id).all()
+    print(f"Found prints: {prints}")  # Debugging line
+    if prints:
+        return jsonify([print.to_dict() for print in prints]), 200
+    return jsonify([]), 200
 
-    print_list = Prints.query.filter_by(jobsite_id=jobsite_id).all()
-    print_dict = [ prints.to_dict() for prints in print_list ]
-
-    return print_dict, 200
 
 # READ BY ID
-@app.get('/api/print/<int:id>')
-def get_print(id):
+@app.get('/api/jobsites/<int:jobsite_id>/prints/<int:id>')
+def get_print(jobsite_id, id):
 
-    found_print = Prints.query.where(Prints.id == id).first()
-
+    found_print = Prints.query.filter_by(id=id, jobsite_id=jobsite_id).first()
     if found_print:
         return found_print.to_dict(), 200
-    
     else:
-        return { "error": "Not found"}, 404
+        return { "error": "Not found" }, 404
+
 
 # POST
-@app.post('/api/prints')
-def create_print():
 
-    data = request.json
-# (jobsite_id=data['jobsite_id'])
+@app.post('/api/jobsites/<int:jobsite_id>/prints')
+def create_print(jobsite_id):
+    data = request.get_json()
+    
+    logging.debug(f"Received data: {data}")
+
     try:
-        new_print = Prints(url=data['url'])
+        # Ensure 'url' is provided in the request data
+        if 'url' not in data:
+            raise KeyError('url')
+        
+        url = data['url']
+
+        # Upload the image to Cloudinary
+        try:
+            upload_result = cloudinary.uploader.upload(url)  # Upload image to Cloudinary
+        except Exception as e:
+            logging.error(f"Cloudinary upload failed: {e}")
+            return jsonify({'error': 'Image upload failed. Please try again.'}), 500
+
+        # Extract the secure URL from Cloudinary response
+        cloudinary_url = upload_result['secure_url']
+        
+        # Save the Cloudinary URL to your database
+        new_print = Prints(url=cloudinary_url, jobsite_id=jobsite_id)
         db.session.add(new_print)
         db.session.commit()
+        
+        logging.info(f"Print created: {new_print.to_dict()}")
+        return jsonify(new_print.to_dict()), 201
 
-        return new_print.to_dict(), 201
-    
+    except KeyError as e:
+        logging.error(f"Missing key: {e}")
+        return jsonify({'error': f'Missing key: {e}'}), 400
+
     except Exception as e:
-        return { 'error': str(e)}, 400
+        logging.error(f"Error creating print: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
 
 
 # DELETE
-@app.delete('/api/prints/<int:id>')
-def delete_print(id):
 
-    found_print = Prints.query.where(Prints.id == id).first()
+@app.delete('/api/jobsites/<int:jobsite_id>/prints/<int:id>')
+def delete_prints(jobsite_id, id):
 
-    if found_print:
-        db.session.delete(found_print)
+    found_prints = Prints.query.filter_by(id=id, jobsite_id=jobsite_id).first()
+
+    if found_prints:
+        db.session.delete(found_prints)
         db.session.commit()
-
         return {}, 204
-    
     else:
-        return {"error": "Did not find Print"}, 404
+        return {'error': 'Material not found for this job site'}, 404
+
+
 # END OF PRINTS
 
 # START OF PUNCHLIST
@@ -384,6 +420,7 @@ def delete_punchlist(jobsite_id, id):
 # READ
 @app.get('/api/jobsites/<int:id>/images')
 def get_jobsite_images(id):
+
     images = Image.query.filter_by(jobsite_id=id).all()
     image_dicts = [image.to_dict() for image in images]
     return image_dicts, 200

@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -15,7 +13,9 @@ function NavBar({ currentUser, handleLogout, selectedJobsite, handleHomeClick })
         {selectedJobsite && (
           <NavLink to="/punchlist">Punch List</NavLink>
         )}
+         {selectedJobsite && (
           <NavLink to="/prints">Prints</NavLink>
+        )}
           <NavLink to="/image">Images</NavLink>
         
          
