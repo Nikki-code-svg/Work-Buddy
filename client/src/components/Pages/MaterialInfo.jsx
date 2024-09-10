@@ -106,6 +106,7 @@ function MaterialInfo({ loading, setLoading, jobsiteName }) {
                             <CopyButton className='copybtnM' textToCopy={inputValues.content.join('\n')} />
                             {isEditable ? (
                                 <textarea
+                                    className='material-textarea-edit'
                                     name='content'
                                     value={inputValues.content.join('\n') || ''}
                                     onChange={(e) => handleInputChange('content', e.target.value.split('\n'))}

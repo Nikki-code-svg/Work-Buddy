@@ -47,7 +47,7 @@ function JobsiteList({ search, setSearch, setSelectedJobsite}) {
               <NewJob handleAddJobsite={handleAddJobsite} />
             </div>
             <div className='equal-section newjob'>
-            <div className='searchbar-josbsite'>
+            <div className='searchbar-jobsite'>
                 <input
                     className='search-input-j'
                     type="text"

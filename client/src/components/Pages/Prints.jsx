@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import UploadWidget from '../UploadWidget';
 import DisplayImage from '../DisplayImage';
 
-const Prints = ({ jobsiteId }) => {
+const Prints = ({ jobsiteId, jobsiteName}) => {
     const [prints, setPrints] = useState([]);
     const [imageUrls, setImageUrls] = useState([]);
     const [error, setError] = useState(null);
@@ -31,8 +31,8 @@ const Prints = ({ jobsiteId }) => {
     
 
     return (
-        <div>
-            <h1>Prints for Jobsite {jobsiteId}</h1>
+        <div className='print-container'>
+            <h1 className='print-title'>Prints for Jobsite {jobsiteName}</h1>
             <UploadWidget setImageUrls={setImageUrls} />
             {error && <p>{error}</p>}
             {prints.length > 0 ? (
@@ -46,7 +46,8 @@ const Prints = ({ jobsiteId }) => {
                 <div>
                     <h2>Uploaded Images</h2>
                     {imageUrls.map((url, index) => (
-                        <img key={index} src={url} alt={`Uploaded ${index}`} />
+                       <img  className='.small-image-prints' key={index} src={url} alt={`Uploaded ${index}`} style={{ width: '400px', height: '400px' }} />
+
                     ))}
                 </div>
             )}

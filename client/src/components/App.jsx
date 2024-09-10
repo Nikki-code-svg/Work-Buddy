@@ -10,6 +10,8 @@ import MaterialInfo from "./Pages/MaterialInfo";
 import MaterialList from "./Pages/MaterialList";
 import PunchList from "./Pages/PunchList";
 import Prints from "./Pages/Prints";
+import ImageInfo from "./Pages/ImageInfo"
+import ImageList from "./Pages/ImageList"
 import DisplayImage from "./DisplayImage";
 
 
@@ -127,6 +129,7 @@ function App() {
                             loading={loading} 
                             setLoading={setLoading} 
                             jobsiteId={selectedJobsite.id} 
+                            jobsiteName={selectedJobsite.name} 
                           /> 
                         : <Navigate to="/login" />} 
                     />
@@ -134,8 +137,8 @@ function App() {
                     )}
                     {selectedJobsite && (
                     <Route 
-                    path="/print/:id" 
-                    element={currentUser 
+                        path="/print/:id" 
+                        element={currentUser 
                         ? <DisplayImage 
                             loading={loading} 
                             setLoading={setLoading} 
@@ -156,16 +159,35 @@ function App() {
                         : <Navigate to="/login" />} 
                 />
                 
-                
+                {selectedJobsite && (
                 <Route 
-                    path="/image" 
+                    path="/images" 
                     element={currentUser 
-                        ? <Image 
+                        ? <ImageList
                             loading={loading} 
                             setLoading={setLoading} 
+                            search={search} 
+                            setSearch={setSearch} 
+                            jobsiteId={selectedJobsite.id} 
+                            jobsiteName={selectedJobsite.name} 
                           /> 
                         : <Navigate to="/login" />} 
                 />
+            )}
+                 {selectedJobsite && (
+                <Route 
+                    path="/images/:id" 
+                    element={currentUser && selectedJobsite 
+                        ? <ImageInfo 
+                            loading={loading} 
+                            setLoading={setLoading} 
+                            jobsiteId={selectedJobsite.id} 
+                            jobsiteName={selectedJobsite.name} 
+                          /> 
+                        : <Navigate to="/login" />} 
+                />
+            )}
+                  
             </Routes>
         </div>
     );

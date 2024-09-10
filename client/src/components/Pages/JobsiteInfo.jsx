@@ -91,6 +91,7 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
                         <td>
                             {isEditable ? (
                                 <input
+                                    className='job-input-edit'
                                     name='name'
                                     type='text'
                                     value={inputValues.name}
@@ -106,6 +107,7 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
                         <td>
                             {isEditable ? (
                                 <input
+                                    className='job-input-edit'
                                     name='location'
                                     type='text'
                                     value={inputValues.location}
@@ -121,6 +123,7 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
                         <td>
                             {isEditable ? (
                                 <input
+                                    className='job-input-edit'
                                     name='startdate'
                                     type='text'
                                     value={inputValues.startdate}
@@ -136,6 +139,7 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
                         <td>
                             {isEditable ? (
                                 <input
+                                    className='job-input-edit'
                                     name='enddate'
                                     type='text'
                                     value={inputValues.enddate}
@@ -151,6 +155,7 @@ function JobsiteInfo({ loading, setLoading, setSelectedJobsite }) {
                         <td>
                             {isEditable ? (
                                 <input
+                                    className='job-input-edit'
                                     name='note'
                                     type='text'
                                     value={inputValues.note}

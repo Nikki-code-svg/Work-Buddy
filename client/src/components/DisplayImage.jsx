@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Image } from 'cloudinary-react';
 
 const API_URL = 'http://localhost:5555';
 
-function DisplayImage({ jobsiteId }) {  // Receive jobsiteId as a prop
+function DisplayImage({ jobsiteId }) {  
   const [message, setMessage] = useState('');
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState('');

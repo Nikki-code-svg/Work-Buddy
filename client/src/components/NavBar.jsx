@@ -16,7 +16,9 @@ function NavBar({ currentUser, handleLogout, selectedJobsite, handleHomeClick })
          {selectedJobsite && (
           <NavLink to="/prints">Prints</NavLink>
         )}
-          <NavLink to="/image">Images</NavLink>
+         {selectedJobsite && (
+          <NavLink to="/images">Images</NavLink>
+        )}
         
          
            
@@ -24,7 +26,7 @@ function NavBar({ currentUser, handleLogout, selectedJobsite, handleHomeClick })
         </>
       ) : (
         <div className="parent-container">
-          <h3 className='title'>Work Buddy</h3>
+          <h3 className='title'>Work Buddy </h3>
         </div>
       )}
     </nav>

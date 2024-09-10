@@ -19,7 +19,7 @@ body {
 /* Large TV screens (over 1600px wide) */
 @media (min-width: 1600px) {
   body {
-    font-size: 20px; /* Larger font size for readability on very large screens */
+    font-size: 30px; /* Larger font size for readability on very large screens */
   }
 
   .navbar {
@@ -63,31 +63,36 @@ body {
   }
 
   .copybtn {
-    font-size: 1.5em;
-    padding: 1.5em;
+    font-size: 1em;
+    padding: 1em;
   }
 
   .edit-btn-m {
     font-size: 1.2em; /* Larger buttons for better usability */
     padding: 1em; 
   }
+
   .punchbtn {
     font-size: 1.2em;
     padding: 1em;
   }
 
-  .search-input-j {
-    font-size: 1.5em; /* Larger buttons for better usability */
+  .copybtn-punch {
+    font-size: 1em;
     padding: 1em;
   }
 
-  .seach-input-m {
-    font-size: 1.2em; /* Larger buttons for better usability */
+  /* .search-input-j {
+    padding: 1em;
+  } */
+
+  .seach-input-m, .search-input-j {
+    font-size: 1.5em; 
     padding: 1em;
   }
 
   .punch-input {
-    font-size: 1.5em; /* Larger buttons for better usability */
+    font-size: 1.5em; 
     padding: 3em;
   }
 
@@ -99,10 +104,26 @@ body {
     padding: 3em;
   }
 
+  .punchlist-title {
+    font-size: 2.5em;
+    padding: 3em;
+  }
+
+  .material-title {
+    font-size: 2.5em;
+    padding: 3em;
+  }
+
   .textarea-material{
-    font-size: 1em; /* Larger buttons for better usability */
+    font-size: 1em; 
     padding: 1em;
   }
+
+  .material-textarea-edit, .material-date{
+    font-size: 1em; 
+    padding: 1em;
+  }
+
 
   table th, table td {
     font-size: 2rem; 
@@ -131,7 +152,7 @@ body {
 /* 4K and very large widescreens (over 2560px wide) */
 @media (min-width: 2560px) {
   body {
-    font-size: 20px; /* Larger font size for very large screens */
+    font-size: 30px; /* Larger font size for very large screens */
   }
 
   .navbar {
@@ -150,7 +171,7 @@ body {
   }
  
   .newjob, .searchbar-container,
-  .punchlist-card button {
+  .punchlist-card {   
     max-width: 35%; /* Adjust max-width for very large screens */
   }
  
@@ -178,13 +199,30 @@ body {
     font-size: 1em;
     padding: 1em;
   }
- 
+  .copybtn-punch {
+    font-size: 1em;
+    padding: 1em;
+  }
+
+  .punchlist-title {
+    font-size: 2.5em;
+    padding: 3em;
+  }
+
+  .material-title {
+    font-size: 2.5em;
+    padding: 3em;
+  }
 
    table th, table td {
     width: 100%;
     box-sizing: border-box;
   }
   
+  .search-input-j{
+    font-size: 1.2em; 
+    padding: 1em;
+}
 
   /* Ensure larger tables are fully visible */
   thead, tbody {
@@ -194,7 +232,7 @@ body {
 
   th, td {
     padding: 20px;
-    font-size: 0.9rem; 
+    font-size: 1em; 
  
 }
 
@@ -217,6 +255,7 @@ body {
   width: 100%; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box; 
+  
 }
 
 /* Navbar Items */
@@ -259,6 +298,8 @@ body {
 
 /* Home/jobsites */
 
+
+
 /* form title for jobs */
 .create-title {
   text-align: center;
@@ -271,7 +312,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
- 
   gap: 1em;
   padding: 1em;
 }
@@ -294,6 +334,7 @@ body {
 .search-input-j{
     border: 2px solid #FFBB70;
     border-radius: 5px;
+    font-size: 30px;
 }
    
 
@@ -314,11 +355,16 @@ body {
 
 .jobsite-title{
   text-align: center;
-  background-color: #B4B4B8;
+  background: linear-gradient(to right,  #FFBB70,  #ED9455);
   padding: 20px;
 }
 
+.display-jobsites {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: linear-gradient(to right,  #B4B4B8,   #ddd);
 
+}
 
 .job-card-container {
   display: flex;
@@ -330,6 +376,7 @@ body {
   padding: 0.5em;
   border: 2px solid #ddd;
   border-radius: 5px;
+  background: rgba(128, 128, 128, 0.5);
 }
 
 .job-card-button {
@@ -370,7 +417,7 @@ body {
 
 @media (max-width: 768px) {
   .job-card-container {
-      flex-direction: column;
+      flex-direction: row;
   }
 
   .job-card-link {
@@ -432,12 +479,17 @@ button:hover {
     padding: 0.5em;
   }
 }
+/* edit input fields for jobsite table */
+.job-input-edit {
+  font-size: 1em;
+
+}
 
 
 /* start materials */
 .material-title {
   text-align: center;
-  background-color: #B4B4B8;
+  background: linear-gradient(to left,  #B4B4B8,   #ddd);
   padding: 20px;
 }
 
@@ -454,6 +506,9 @@ button:hover {
   justify-content: space-between; 
   gap: 1em;
   padding: 1em;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background: rgba(128, 128, 128, 0.5);
 }
 
 .equal-section {
@@ -475,6 +530,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  flex: 3;
+  
 }
 
 @media (max-width: 768px) {
@@ -505,12 +562,6 @@ button:hover {
     border-radius: 5px;
   }
 
-  .material-cards {
-    flex: 3;
-  }
-
-
-
 .material-card {
   display: flex; 
   justify-content: space-between;
@@ -520,6 +571,9 @@ button:hover {
   padding: 0.5em;
   border: 2px solid #ddd;
   border-radius: 5px;
+  background: linear-gradient(to left,  #B4B4B8, #686D76);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Basic shadow */
+  
 }
 
 .materialbtn {
@@ -587,6 +641,10 @@ button:hover {
   background-color: #B4B4B8;
   padding: 20px;
 
+}
+
+.label-item-p {
+  font-size: 1em;
 }
 
 .punchlist-container {
@@ -679,4 +737,139 @@ tbody tr:nth-child(even) {
       font-size: 1.1rem; 
   }
 }
+
+.card {
+  display: flex;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 600px;
+  margin: 20px auto;
+}
+
+.image-container {
+  flex: 1;
+  position: relative;
+}
+
+.text-area {
+  flex: 1;
+  padding: 10px;
+}
+
+/* prints */
+
+.print-container {
+  text-align: center;
+  background: linear-gradient(to right,  #FFBB70,  #ED9455);
+  padding: 20px;
+}
+
+.print-title {
+  text-align: center;
+  background-color: #B4B4B8;
+  padding: 20px;
+  border-radius: 20px;
+
+}
+
+.uploadprintbtn {
+  background: linear-gradient(to left,  #FFBB70,  #ED9455);
+}
+
+.uploadprintbtn:hover {
+  background: linear-gradient(to left,  #B4B4B8,   #ddd);
+}
+
+/* IMAGES */
+
+.image-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: black; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  width: 100%; 
+  max-width: 300px;
+  box-sizing: border-box; 
+}
+
+.image-card:hover {
+  transform: translateX(-5px) translateY(-5px); 
+}
+
+.image-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.note-section {
+  background-color: #F5F5F5; 
+  padding: 10px;
+  border-radius: 0 10px 10px 0; 
+  color: #333;
+  flex: 1;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deletebtn {
+  position: relative;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.note {
+  background-color: #F5F5F5;
+  border-radius: 0 10px 10px 0; 
+  align-items: center;
+  padding: 2px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .image-card {
+    max-width: 250px; 
+  }
+}
+
+@media (max-width: 900px) {
+  .image-card {
+    max-width: 200px; 
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .image-card {
+    flex-direction: column; 
+    max-width: 100%; 
+    margin: 10px auto;
+  }
+  
+  .note-section {
+    border-radius: 10px 10px 0 0;
+    margin-left: 0;
+    margin-top: 10px;
+    text-align: center; 
+  }
+  
+  .image-card img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+
+
 

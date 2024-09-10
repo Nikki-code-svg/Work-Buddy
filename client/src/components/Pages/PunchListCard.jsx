@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import CopyButton from "../ClipBoard";
 
@@ -43,9 +41,7 @@ function PunchListCard({ punchlist, handleDelete }) {
                     Delete
                 </button>
             )}
-
-            {/* Add the CopyButton to copy the punchlist name and checkbox state */}
-            <CopyButton textToCopy={`${punchlist.name}, Checked: ${isChecked ? "Yes" : "No"}`} />
+           <CopyButton className='copybtn-punch' textToCopy={`${punchlist.name}, Checked: ${isChecked ? "Yes" : "No"}`} />
         </div>
     );
 }

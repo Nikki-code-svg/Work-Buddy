@@ -17,6 +17,11 @@ import cloudinary
 import cloudinary.uploader
 from cloudinary.utils import cloudinary_url
 import logging
+from flask import send_file
+import io
+
+# from PIL import Image
+# import io
 
 # Local imports
 
@@ -266,6 +271,7 @@ def delete_material(jobsite_id, id):
 
 @app.get('/api/jobsites/<int:jobsite_id>/prints')
 def get_prints(jobsite_id):
+
     print(f"Fetching prints for jobsite_id: {jobsite_id}")  # Debugging line
     prints = Prints.query.filter_by(jobsite_id=jobsite_id).all()
     print(f"Found prints: {prints}")  # Debugging line
@@ -386,7 +392,7 @@ def create_punchlist(jobsite_id):
 @app.patch('/api/jobsites/<int:jobsite_id>/punchlists/<int:id>')
 def update_punchlist(jobsite_id, id):
 
-    found_punchlist = PunchList.query.filter_by(id=id, jobsite_id=jobsite_id).first()
+    found_punchlist = PunchList.query.filter_by(id=id,  jobsite_id=jobsite_id).first()
 
     if  found_punchlist:
         data = request.get_json()
@@ -421,39 +427,67 @@ def delete_punchlist(jobsite_id, id):
 @app.get('/api/jobsites/<int:id>/images')
 def get_jobsite_images(id):
 
-    images = Image.query.filter_by(jobsite_id=id).all()
-    image_dicts = [image.to_dict() for image in images]
-    return image_dicts, 200
-    
-# READ BY ID
-@app.get('/api/images/<int:id>')
-def get_image(id):
-    found_image = Image.query.where(Image.id == id).first()
+    try:
+        images = Image.query.filter_by(jobsite_id=id).all()
+        image_dicts = [image.to_dict() for image in images]
+        return image_dicts, 200
+    except Exception as e:
+        return {'error': str(e)}, 500
 
-    if found_image:
-        return found_image.to_dict(), 200
-    else:
-        return { 'error': "Not Found"}, 404
+# READ BY ID
+@app.get('/api/jobsite/<int:jobsite_id>/images/<int:id>')
+def get_image(jobsite_id, id):
+    
+    try:
+        found_image = Image.query.filter_by(id=id, jobsite_id=jobsite_id).first()
+        if found_image:
+            return found_image.to_dict(), 200
+        else:
+            return {'error': "Not Found"}, 404
+    except Exception as e:
+        return {'error': str(e)}, 500
+    
+
+
+
+
+
+# @app.get('/api/jobsite/<int:jobsite_id>/images/<int:id>')
+# def get_image(jobsite_id, id):
+#     try:
+#         found_image = Image.query.filter_by(id=id, jobsite_id=jobsite_id).first()
+#         if found_image:
+#             image_data = io.BytesIO(found_image.image_data)  # Assuming 'image_data' is a BLOB field
+#             return send_file(image_data, mimetype='image/jpeg')  # Adjust mimetype as needed
+#         else:
+#             return {'error': "Not Found"}, 404
+#     except Exception as e:
+#         return {'error': str(e)}, 500
+
+
     
 # POST
-@app.post('/api/images')
-def create_image():
+@app.post('/api/jobsites/<int:jobsite_id>/images')
+def create_image(jobsite_id): 
     data = request.json
 
     try:
-        new_image = Image(location=data['location'], note=data['note'])
+        new_image = Image(location=data['location'], note=data['note'], url=data['url'], jobsite_id=jobsite_id)
         db.session.add(new_image)
         db.session.commit()
 
         return new_image.to_dict(), 201
     
     except Exception as e:
-        return { 'error': str(e)}, 400
+        return {'error': str(e)}, 400
+
+    
+  
     
 # PATCH
-@app.patch('/api/images/<int:id>')
-def update_image(id):
-    found_image = Image.query.where(Image.id == id).first()
+@app.patch('/api/jobsites/<int:jobsite_id>/images/<int:id>')
+def update_image(jobsite_id, id):
+    found_image = Image.query.filter_by(id=id, jobsite_id=jobsite_id).first()
 
     if found_image:
         data = request.json
@@ -469,10 +503,12 @@ def update_image(id):
     except Exception as e:
         return { 'error': str(e)}, 400
     
+
+    
 # DELETE
-@app.delete('/api/images/<int:id>')
-def delete_image(id):
-    found_image = Image.query.where(Image.id == id).first()
+@app.delete('/api/jobsites/<int:jobsite_id>/images/<int:id>')
+def delete_image(jobsite_id, id):
+    found_image = Image.query.filter_by(id=id, jobsite_id=jobsite_id).first()
     if found_image:
         db.session.delete(found_image)
         db.session.commit()
@@ -481,6 +517,8 @@ def delete_image(id):
     
     else:
         return {'error': 'Not Found'}, 404
+    
+
 # END OF IMAGES
 
 # @app.post('/upload')
