@@ -70,7 +70,7 @@ function NewJob({ handleAddJobsite}) {
             <form onSubmit={handleSubmit}>
              
               <div className='new-form-group'>
-                <label htmlFor='name'>Name:</label>
+                <label className='job-label' htmlFor='name'>Name:</label>
                 <input
                   type='text'
                   id='name'
@@ -80,7 +80,7 @@ function NewJob({ handleAddJobsite}) {
                 />
               </div>
               <div className='new-form-group'>
-                <label htmlFor='location'>Location:</label>
+                <label className='job-label' htmlFor='location'>Location:</label>
                 <input
                   type='text'
                   id='location'
@@ -91,7 +91,7 @@ function NewJob({ handleAddJobsite}) {
                 />
               </div>
               <div className='new-form-group'>
-                <label htmlFor='startdate'>Start Date:</label>
+                <label  className='job-label' htmlFor='startdate'>Start Date:</label>
                 <input
                   type='text'
                   id='startdate'
@@ -102,7 +102,7 @@ function NewJob({ handleAddJobsite}) {
                 />
               </div>
               <div className='new-form-group'>
-                <label htmlFor='enddate'>End Date:</label>
+                <label  className='job-label' htmlFor='enddate'>End Date:</label>
                 <input
                   type='text'
                   id='enddate'
@@ -113,7 +113,7 @@ function NewJob({ handleAddJobsite}) {
                 />
               </div>
               <div className='new-form-group'>
-                <label htmlFor='note'>Type of Work:</label>
+                <label  className='job-label' htmlFor='note'>Type of Work:</label>
                 <input
                   type='text'
                   id='note'

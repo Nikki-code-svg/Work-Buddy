@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import JobCard from './JobCard';
 import NewJob from './NewJob';
+import './JobImage.css'
+
 import { useNavigate } from 'react-router-dom';
 
 function JobsiteList({ search, setSearch, setSelectedJobsite}) {
@@ -42,7 +44,8 @@ function JobsiteList({ search, setSearch, setSelectedJobsite}) {
 
 
    return (
-        <main className="jobsitelist-container">
+    
+    <main className="jobsitelist-container">
         <div className=' equal-section newjob'>
               <NewJob handleAddJobsite={handleAddJobsite} />
             </div>
@@ -77,6 +80,7 @@ function JobsiteList({ search, setSearch, setSelectedJobsite}) {
                 </div>
             </div>
         </main>
+        
     );
 }
 

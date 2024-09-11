@@ -1,0 +1,28 @@
+.jobsitelist-container {
+  background-image: url('./IMG_1624.JPG');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 1em;
+}
+
+.materiallist-container {
+  background-image: url('./IMG_1761.JPG');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  gap: 1em;
+  padding: 1em;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  /* background: rgba(128, 128, 128, 0.5); */
+}

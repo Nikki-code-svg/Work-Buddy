@@ -182,13 +182,14 @@ body {
 
   .job-card-button, .materialbtn, .deletebtn,
   .punchlist-card  {
-    font-size: 1.5em; /* Larger buttons for better usability */
+    font-size: 1em; /* Larger buttons for better usability */
     padding: 1.25em; /* Increase padding for very large buttons */
   }
 
   .punchlist-card {
-    font-size: 2em; /* Larger buttons for better usability */
+    font-size: 1em; /* Larger buttons for better usability */
     padding: 1.25em; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .checkbox {
@@ -308,12 +309,14 @@ body {
 
 }
 
-.jobsitelist-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1em;
-  padding: 1em;
+.create-jobsite-wrapper {
+  border: solid #FFBB70;
+  border-radius: 20px;
+  
+}
+
+.job-label {
+  color:  #FF6000;
 }
 
 .newjob {
@@ -362,7 +365,8 @@ body {
 .display-jobsites {
   border: 2px solid #ccc;
   border-radius: 10px;
-  background: linear-gradient(to right,  #B4B4B8,   #ddd);
+  /* background: linear-gradient(to right,  #B4B4B8,   #ddd); */
+  background: rgba(128, 128, 128, 0.6);
 
 }
 
@@ -376,7 +380,7 @@ body {
   padding: 0.5em;
   border: 2px solid #ddd;
   border-radius: 5px;
-  background: rgba(128, 128, 128, 0.5);
+  background: rgba(128, 128, 128, 0.10);
 }
 
 .job-card-button {
@@ -493,6 +497,10 @@ button:hover {
   padding: 20px;
 }
 
+.material-label {
+  color: white;
+}
+
 .create-new-title {
   text-align: center;
   background-color: #B4B4B8;
@@ -500,7 +508,7 @@ button:hover {
 
 }
 
-.materiallist-container {
+/* .materiallist-container {
   display: flex;
   flex-wrap: wrap; 
   justify-content: space-between; 
@@ -509,7 +517,7 @@ button:hover {
   border: 2px solid #ddd;
   border-radius: 5px;
   background: rgba(128, 128, 128, 0.5);
-}
+} */
 
 .equal-section {
   flex: 1; 
@@ -549,6 +557,8 @@ button:hover {
     flex: 2;
     max-width: 400px;
     margin-right: 20px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
   }
 
   .material-search-bar {
@@ -636,10 +646,22 @@ button:hover {
 
 }
 
+.punchbtn {
+  background-color:  #FFA559;
+  width: 100%;
+  justify-content: center;
+}
+
+.punchbtn:hover{
+  background-color: #FF6000;
+}
+
+
 .punchlist-title {
   text-align: center;
   background-color: #B4B4B8;
   padding: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 
 }
 
@@ -652,6 +674,7 @@ button:hover {
   flex-direction: column;
   gap: 1em; 
   padding: 1em;
+  background: linear-gradient(to bottom,  #454545, #FF6000, #FFA559, #FFE6C7);
 }
 
 .punchlist-container > div {
@@ -667,10 +690,11 @@ button:hover {
   border-radius: 5px; 
   background-color: #f9f9f9; 
   margin-bottom: 0.5em; 
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.1);
 }
 
 .punchlist-card button {
-  background-color: red;
+  background-color: #FF6000;
   color: white;
   border: none;
   padding: 0.5em 1em;
@@ -761,12 +785,13 @@ tbody tr:nth-child(even) {
 .print-container {
   text-align: center;
   background: linear-gradient(to right,  #FFBB70,  #ED9455);
-  padding: 20px;
+  padding: 5em;
 }
 
 .print-title {
   text-align: center;
   background-color: #B4B4B8;
+  margin-bottom: 5em;
   padding: 20px;
   border-radius: 20px;
 

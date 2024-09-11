@@ -367,3 +367,6 @@ get this image on: Alamy
 
 construction images:
 adobe stock
+
+images on main page and material:
+Image by Nicole Wachter

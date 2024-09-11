@@ -63,7 +63,7 @@ function NewMaterial({ handleAddMaterial, jobsiteId }) {
                 )}
                 <form onSubmit={handleSubmit}>
                     <div className="new-form-group">
-                        <label htmlFor="datelist">Date:</label>
+                        <label className='material-label' htmlFor="datelist">Date:</label>
                         <input
                             type="text"
                             id="datelist"
@@ -74,7 +74,7 @@ function NewMaterial({ handleAddMaterial, jobsiteId }) {
                         />
                     </div>
                     <div className="new-form-group">
-                        <label htmlFor="content">List:</label>
+                        <label  className='material-label' htmlFor="content">List:</label>
                         <textarea
                             className='textarea-material'
                             id="content"

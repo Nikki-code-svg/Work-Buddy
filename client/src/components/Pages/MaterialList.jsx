@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MaterialCard from './MaterialCard';
 import NewMaterial from './NewMaterial';
+import './JobImage.css';
 import { useNavigate } from 'react-router-dom';
 
 function MaterialList({ search, setSearch, setSelectedMaterial, jobsiteId, jobsiteName  }) {

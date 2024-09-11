@@ -40,7 +40,7 @@ const Prints = ({ jobsiteId, jobsiteName}) => {
                     <DisplayImage key={print.id} publicId={print.url} jobsiteId={jobsiteId } />
                 ))
             ) : (
-                <p>No prints available.</p>
+                <p> </p>
             )}
             {imageUrls.length > 0 && (
                 <div>
