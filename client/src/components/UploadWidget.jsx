@@ -17,8 +17,8 @@ const UploadWidget = ({ setImageUrls }) => {
             if (window.cloudinary) {
                 cloudinaryRef.current = window.cloudinary;
                 widgetRef.current = cloudinaryRef.current.createUploadWidget({
-                    cloudName: 'dhncrfnsz',
-                    uploadPreset: 'mlzphbuh',
+                    cloudName: '',
+                    uploadPreset: '',
                     multiple: true,
                 }, (error, result) => {
                     if (error) {
