@@ -19,46 +19,46 @@ body {
 /* Large TV screens (over 1600px wide) */
 @media (min-width: 1600px) {
   body {
-    font-size: 30px; /* Larger font size for readability on very large screens */
+    font-size: 30px; 
   }
 
   .navbar {
-    padding: 1.5em; /* Increase padding for more space */
+    padding: 1.5em; 
     font-size: 2rem; 
   }
 
   .navbar a, .navbar button {
-    padding: 0.75em 1.5em; /* Adjust padding for larger screen */
+    padding: 0.75em 1.5em; 
   }
 
   .jobsitelist-container,
   .materiallist-container,
   .punchlist-container {
-    padding: 2em; /* More padding for larger containers */
+    padding: 2em; 
   }
 
   .newjob, .searchbar-container,
   .punchlist-card {
-    max-width: 50%; /* Reduce the max-width to better utilize space on large screens */
+    max-width: 50%; 
   }
   .checkbox {
-    transform: scale(1.5); /* Increase or decrease the number for size */
+    transform: scale(1.5); 
     margin: 20px;
   }
   .create-jobsite-wrapper {
-    max-width: 800px; /* Wider wrapper for larger screens */
+    max-width: 800px; 
   }
 
   .job-card-button, .materialbtn, .deletebtn,
   .punchlist-card {
-    font-size: 1.2em; /* Larger buttons for better usability */
-    padding: 1em; /* Increase padding for larger buttons */
+    font-size: 1.2em; 
+    padding: 1em; 
   }
 
   .copybtnM {
     display: flex;
     margin-left: auto;
-    font-size: 1.2em; /* Larger buttons for better usability */
+    font-size: 1.2em;
     padding: 1em; 
   }
 
@@ -68,7 +68,7 @@ body {
   }
 
   .edit-btn-m {
-    font-size: 1.2em; /* Larger buttons for better usability */
+    font-size: 1.2em; 
     padding: 1em; 
   }
 
@@ -152,48 +152,48 @@ body {
 /* 4K and very large widescreens (over 2560px wide) */
 @media (min-width: 2560px) {
   body {
-    font-size: 30px; /* Larger font size for very large screens */
+    font-size: 30px; 
   }
 
   .navbar {
-    padding: 2em; /* Further increase padding for large screens */
+    padding: 2em; 
   }
 
   .navbar a, .navbar button {
-    padding: 1em 2em; /* Adjust padding for very large screens */
+    padding: 1em 2em; 
   }
 
   .jobsitelist-container,
   .materiallist-container,
   .punchlist-container {
-    padding: 2.5em; /* Even more padding for very large containers */
+    padding: 2.5em; 
     
   }
  
   .newjob, .searchbar-container,
   .punchlist-card {   
-    max-width: 35%; /* Adjust max-width for very large screens */
+    max-width: 35%; 
   }
  
 
   .create-jobsite-wrapper {
-    max-width: 1000px; /* Wider wrapper for very large screens */
+    max-width: 1000px; 
   }
 
   .job-card-button, .materialbtn, .deletebtn,
   .punchlist-card  {
-    font-size: 1em; /* Larger buttons for better usability */
-    padding: 1.25em; /* Increase padding for very large buttons */
+    font-size: 1em;
+    padding: 1.25em; 
   }
 
   .punchlist-card {
-    font-size: 1em; /* Larger buttons for better usability */
+    font-size: 1em; 
     padding: 1.25em; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .checkbox {
-    transform: scale(2.0); /* Increase or decrease the number for size */
+    transform: scale(2.0); 
     margin: 20px;
   }
   .punchbtn-delete {
@@ -365,7 +365,7 @@ body {
 .display-jobsites {
   border: 2px solid #ccc;
   border-radius: 10px;
-  /* background: linear-gradient(to right,  #B4B4B8,   #ddd); */
+ 
   background: rgba(128, 128, 128, 0.6);
 
 }
@@ -508,16 +508,7 @@ button:hover {
 
 }
 
-/* .materiallist-container {
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: space-between; 
-  gap: 1em;
-  padding: 1em;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  background: rgba(128, 128, 128, 0.5);
-} */
+
 
 .equal-section {
   flex: 1; 
@@ -582,7 +573,7 @@ button:hover {
   border: 2px solid #ddd;
   border-radius: 5px;
   background: linear-gradient(to left,  #B4B4B8, #686D76);
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Basic shadow */
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); 
   
 }
 
@@ -762,6 +753,58 @@ tbody tr:nth-child(even) {
   }
 }
 
+
+
+
+
+
+/* Container holding both the image cards and the new image */
+.image-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-start; 
+  width: 100%; 
+  padding: 20px; 
+}
+
+/* Image cards section (left side) */
+.image-section {
+  flex: 1; 
+  margin-right: 20px; 
+}
+
+/* New image section (right side) */
+.new-image {
+  flex: 0.3; 
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+/* Image search bar */
+.image-search-bar {
+  margin-bottom: 20px;
+}
+
+/* Image cards container */
+.image-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media (max-width: 768px) {
+  .image-container {
+    flex-direction: column; 
+  }
+  
+  .new-image {
+    flex: 1; 
+    margin-bottom: 20px;
+  }
+}
+
+/* individual card design */
 .card {
   display: flex;
   border: 1px solid #ddd;
@@ -770,14 +813,81 @@ tbody tr:nth-child(even) {
   margin: 20px auto;
 }
 
-.image-container {
-  flex: 1;
-  position: relative;
-}
-
 .text-area {
   flex: 1;
   padding: 10px;
+}
+
+
+.new-form {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.input-image, .textarea-note {
+  width: 100%; 
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+
+}
+
+.submit-image {
+  padding: 10px 20px;
+  background-color:  #FFA559;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+
+}
+
+
+.submit-image:hover {
+  background-color: #FF6000;
+}
+
+
+/* new image */
+.create-image-wrapper {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: flex-start;
+  flex-direction: column;
+  position: relative;
+  max-width: 100%; 
+  width: 30vw; 
+  margin: 0;
+  padding: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* For medium devices (tablets) */
+@media (max-width: 768px) {
+  .create-image-wrapper {
+    width: 50vw; 
+  }
+}
+
+/* For small devices (phones) */
+@media (max-width: 480px) {
+  .create-image-wrapper {
+    width: 80vw; 
+  }
+}
+
+
+.image-search-bar {
+  font-size: 1.5em; 
+  padding: 1em;
+
 }
 
 /* prints */

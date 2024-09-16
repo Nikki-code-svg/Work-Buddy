@@ -61,9 +61,10 @@ function NewImage({ handleAddImages, jobsiteId }) {
                     </div>
                 )}
                 <form onSubmit={handleSubmit}>
-                    <div className="new-form-group">
+                    <div className="new-form">
                         <label htmlFor="location">Location:</label>
                         <input
+                            className='input-image'
                             type="text"
                             id="location"
                             name="location"
@@ -72,9 +73,10 @@ function NewImage({ handleAddImages, jobsiteId }) {
                             required
                         />
                     </div>
-                    <div className="new-form-group">
+                    <div className="new-form">
                         <label htmlFor="url">Image URL:</label>
                         <input
+                            className='input-image'
                             type="text"
                             id="url"
                             name="url"
@@ -83,7 +85,7 @@ function NewImage({ handleAddImages, jobsiteId }) {
                             required
                         />
                     </div>
-                    <div className="new-form-group">
+                    <div className="new-form">
                         <label htmlFor="note">Note:</label>
                         <textarea
                             className='textarea-note'
@@ -97,7 +99,7 @@ function NewImage({ handleAddImages, jobsiteId }) {
                             required
                         />
                     </div>
-                    <button type="submit">
+                    <button className='submit-image' type="submit">
                         {isLoading ? 'Adding...' : 'Add Image'}
                     </button>
                 </form>

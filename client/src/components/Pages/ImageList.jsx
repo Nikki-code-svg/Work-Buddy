@@ -55,7 +55,7 @@ function ImageList({ search, setSearch, jobsiteId }) {
                     />
                 </div>
                 <div className="image-cards">
-                    <h2 className='image-title'>Images</h2>
+                   
                     {images.length > 0 ? (
                         <div>
                             {filteredImages.map((image) => (

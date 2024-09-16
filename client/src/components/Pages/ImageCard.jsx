@@ -12,7 +12,12 @@ function ImageCard({ image, handleDelete }) {
                     style={{ width: '100px', height: '100px', objectFit: 'cover', marginRight: '10px' }}
                 />
             </Link>
-            <div className="note">{image.note}</div>
+            <div className="note">
+            {image.location} 
+            {'  '}
+            {image.note}
+            </div>
+           
             <button 
                 className='deletebtn'
                 onClick={() => handleDelete(image.id)} 

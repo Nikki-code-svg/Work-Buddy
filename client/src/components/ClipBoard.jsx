@@ -9,19 +9,19 @@ function CopyButton({ textToCopy }) {
       await navigator.clipboard.writeText(textToCopy);
       setCopyStatus('Copied!');
       
-      // Reset the copy status after 15 seconds
+      // Reset the copy status after 5 seconds
       setTimeout(() => {
         setCopyStatus('Copy');
-      }, 15000); // 15000 milliseconds = 15 seconds
+      }, 5000); 
 
     } catch (err) {
       console.error('Failed to copy: ', err);
       setCopyStatus('Error');
       
-      // Reset the error status after 15 seconds
+      // Reset the error status after 5 seconds
       setTimeout(() => {
         setCopyStatus('Copy');
-      }, 5000); // 15000 milliseconds = 15 seconds
+      }, 5000); 
     }
   };
 
